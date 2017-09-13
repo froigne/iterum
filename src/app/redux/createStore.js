@@ -1,7 +1,6 @@
-import { createStore as createReduxStore, applyMiddleware, compose } from "redux";
-import thunk from "redux-thunk";
-
+import { applyMiddleware, compose, createStore as createReduxStore } from "redux";
 import rootReducer from "./reducers";
+import thunk from "redux-thunk";
 
 const createStore = initialState => {
   // Middleware you want to use in development:
