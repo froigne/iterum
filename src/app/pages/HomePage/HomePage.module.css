@@ -1,0 +1,6 @@
+@media only screen and (min-width: 768px) {
+  .pageContainer {
+    padding: 0 25px; }
+  .homePageContainer {
+    padding: 0 25px;
+    background: #FFF; } }

@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  node:
+    image: 'node:boron'
+    volumes:
+      - '.:/app'
+    working_dir: '/app'
+
+  web:
+    extends:
+      service: node
+    ports:
+      - '80:3000'
+    entrypoint:
+      - npm
+      - start
