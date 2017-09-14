@@ -1,7 +1,9 @@
+import Flex from "app/components/UI/Flex";
 import Header from "app/components/Header";
 import Layout from "app/components/Layout";
 import PropTypes from "prop-types";
 import React from "react";
+import Roller from "app/components/Roller";
 
 export const HomePage = ({ translate, translateHtml, isLoading, isOpen, onClose }) => (
   <div>
@@ -10,6 +12,9 @@ export const HomePage = ({ translate, translateHtml, isLoading, isOpen, onClose 
     ) : (
       <Layout>
         <Header />
+        <Flex direction="row" size={1} middle center>
+          <Roller />
+        </Flex>
       </Layout>
     )}
   </div>
