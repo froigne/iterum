@@ -1,7 +1,7 @@
+import Header from "app/components/Header";
 import Layout from "app/components/Layout";
 import PropTypes from "prop-types";
 import React from "react";
-import classes from "./HomePage.module.css";
 
 export const HomePage = ({ translate, translateHtml, isLoading, isOpen, onClose }) => (
   <div>
@@ -9,9 +9,7 @@ export const HomePage = ({ translate, translateHtml, isLoading, isOpen, onClose 
       <div>load</div>
     ) : (
       <Layout>
-        <div className={classes.pageContainer}>
-          <div className={classes.homePageContainer}>Bienvenue !</div>
-        </div>
+        <Header />
       </Layout>
     )}
   </div>

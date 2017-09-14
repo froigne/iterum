@@ -1,26 +1,25 @@
-.brandLogo {
-  height: 80px;
-  position: relative;
-  padding-right: 10px; }
+.headerContainer {
+  padding: 10px 25px;
+  position: relative; }
 
-.brandLogo img {
+.header__logo {
+  height: 60px;
+  position: absolute;
+  left: 25px; }
+
+.header__logo img {
   max-height: 100%; }
 
-.brandName {
-  display: flex;
-  align-items: center;
+.header__title {
   margin: 0;
   color: #ddca7e;
-  text-align: left !important; }
-
-.brandNavbar {
-  background-color: #FFF;
-  color: white;
-  padding: 0 25px 0 20px; }
+  text-transform: lowercase;
+  font-size: 4em;
+  font-family: 'Lobster', sans-serif;
+  text-shadow: 1px 1px #000; }
 
 @media only screen and (min-width: 768px) {
-  .brandLogo {
-    top: 15px;
-    padding-right: 20px; }
-  .brandNavbar {
-    padding: 0 50px 0 20px; } }
+  .headerContainer {
+    padding: 10px 50px; }
+  .header__logo {
+    padding-right: 20px; } }
