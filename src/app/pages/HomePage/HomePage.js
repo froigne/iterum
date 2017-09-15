@@ -6,7 +6,18 @@ import PropTypes from "prop-types";
 import React from "react";
 import Roller from "app/components/Roller";
 
-export const HomePage = ({ translate, translateHtml, isLoading, isOpen, onClose, elements }) => (
+export const HomePage = ({
+  translate,
+  translateHtml,
+  isLoading,
+  isOpen,
+  onClose,
+  elements,
+  onRoll,
+  onRollChange,
+  resultIndex,
+  speedRoll
+}) => (
   <div>
     {isLoading ? (
       <div>load</div>
@@ -14,7 +25,14 @@ export const HomePage = ({ translate, translateHtml, isLoading, isOpen, onClose,
       <Layout>
         <Header />
         <Flex direction="row" size={1} middle center>
-          <Roller elements={elements} />
+          <Roller
+            ref={c => (this._slider = c)}
+            elements={elements}
+            onClick={onRoll}
+            onChange={onRollChange}
+            autoplaySpeed={speedRoll}
+            autoplay={resultIndex >= 0}
+          />
         </Flex>
       </Layout>
     )}
@@ -26,7 +44,11 @@ HomePage.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   elements: ImmutablePropTypes.list,
   isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  onRoll: PropTypes.func.isRequired,
+  onRollChange: PropTypes.func.isRequired,
+  speedRoll: PropTypes.number.isRequired,
+  resultIndex: PropTypes.number
 };
 
 export default HomePage;
