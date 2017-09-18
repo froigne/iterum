@@ -15,24 +15,28 @@ export const HomePage = ({
   elements,
   onRoll,
   onRollChange,
-  resultIndex,
+  rollResult,
   isRolling,
-  speedRoll
+  rollSpeed
 }) => (
   <div>
-    <Layout>
-      <Header />
-      <Flex direction="row" size={1} middle center>
-        <Roller
-          elements={elements}
-          onClick={onRoll}
-          onChange={onRollChange}
-          autoplaySpeed={speedRoll}
-          autoplay={isRolling}
-          slickGoTo={resultIndex}
-        />
-      </Flex>
-    </Layout>
+    {isLoading ? (
+      <div>load</div>
+    ) : (
+      <Layout>
+        <Header />
+        <Flex direction="row" size={1} middle center>
+          <Roller
+            onClick={onRoll}
+            elements={elements}
+            onChange={onRollChange}
+            rollSpeed={rollSpeed}
+            isRolling={isRolling}
+            rollResult={rollResult}
+          />
+        </Flex>
+      </Layout>
+    )}
   </div>
 );
 
@@ -44,8 +48,8 @@ HomePage.propTypes = {
   onClose: PropTypes.func.isRequired,
   onRoll: PropTypes.func.isRequired,
   onRollChange: PropTypes.func.isRequired,
-  speedRoll: PropTypes.number.isRequired,
-  resultIndex: PropTypes.number.isRequired,
+  rollSpeed: PropTypes.number.isRequired,
+  rollResult: PropTypes.number.isRequired,
   isRolling: PropTypes.bool.isRequired
 };
 

@@ -25,14 +25,14 @@ const fetchElementList = ({ setElements }) => () => {
   return Promise.resolve();
 };
 
-const onRoll = ({ elements, setResultIndex, setSpeedRoll, setIsRolling }) => e => {
+const onRoll = ({ elements, setRollResult, setSpeedRoll, setIsRolling }) => e => {
   const rollIndex = Math.floor(Math.random() * (elements.size - 1));
 
   setIsRolling(true);
 
   setTimeout(() => {
     setIsRolling(false);
-    setResultIndex(rollIndex);
+    setRollResult(rollIndex);
   }, 3000);
 };
 
@@ -48,9 +48,9 @@ export default compose(
   withState("isLoading", "setIsLoading", true),
   withState("isOpen", "setIsOpen", false),
   withState("elements", "setElements", Immutable.List()),
-  withState("resultIndex", "setResultIndex", 0),
+  withState("rollResult", "setRollResult", 0),
   withState("isRolling", "setIsRolling", true),
-  withState("speedRoll", "setSpeedRoll", 500),
+  withState("rollSpeed", "setSpeedRoll", 500),
   withHandlers({
     fetchElementList,
     onRoll,
