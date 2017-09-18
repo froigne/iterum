@@ -21,6 +21,7 @@
     "react-scripts": "github:froigne/react-scripts",
     "react-slick": "^0.15.4",
     "react-tap-event-plugin": "^2.0.1",
+    "react-wrappy-text": "^1.1.1",
     "recompose": "^0.25.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
