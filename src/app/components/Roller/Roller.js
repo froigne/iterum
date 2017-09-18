@@ -5,23 +5,20 @@ import Slider from "app/components/UI/Slider";
 import classes from "./Roller.module.css";
 
 export const Roller = ({ elements, onClick, onChange, rollSpeed, isRolling, rollResult, ...props }) => (
-  <div className={classes.rollerContainer} onClick={onClick}>
+  <div className={classes.rollerContainer}>
     <Slider
+      onClick={onClick}
       vertical={true}
       speed={100}
-      arrows={false}
-      pauseOnHover={false}
-      swipe={false}
-      swipeToSlide={false}
-      touchMove={false}
-      draggable={false}
-      lazyLoad={false}
-      infinite={true}
-      rtl={true}
-      afterChange={onChange}
-      autoplaySpeed={rollSpeed}
+      swiping={false}
+      dragging={false}
+      wrapAround={true}
+      afterSlide={onChange}
+      easing="easeInOutSine"
+      autoplayInterval={rollSpeed}
+      decorators={[]}
       autoplay={isRolling}
-      slickGoTo={rollResult}
+      slideIndex={rollResult}
       {...props}
     >
       {elements.entrySeq().map(([index, element]) => <div key={index}> {element} </div>)}

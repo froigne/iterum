@@ -25,7 +25,7 @@ export const HomePage = ({
     ) : (
       <Layout>
         <Header />
-        <Flex direction="row" size={1} middle center>
+        <Flex direction="row" size={1} middle center onClick={onRoll}>
           <Roller
             onClick={onRoll}
             elements={elements}
