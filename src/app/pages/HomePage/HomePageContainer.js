@@ -5,13 +5,13 @@ import Immutable from "immutable";
 import data from "./data.json";
 
 function componentWillMount() {
-  const { fetchElementList, setIsLoading, setResultIndex, setSpeedRoll } = this.props;
+  const { fetchElementList, setIsLoading, setIsRolling, setSpeedRoll } = this.props;
 
   fetchElementList().then(() => {
     setIsLoading(false);
 
     setTimeout(() => {
-      setResultIndex();
+      setIsRolling(false);
       setSpeedRoll(100);
     }, 2000);
   });
@@ -25,10 +25,15 @@ const fetchElementList = ({ setElements }) => () => {
   return Promise.resolve();
 };
 
-const onRoll = ({ elements, setResultIndex }) => e => {
+const onRoll = ({ elements, setResultIndex, setSpeedRoll, setIsRolling }) => e => {
   const rollIndex = Math.floor(Math.random() * (elements.size - 1));
 
-  setResultIndex(rollIndex);
+  setIsRolling(true);
+
+  setTimeout(() => {
+    setIsRolling(false);
+    setResultIndex(rollIndex);
+  }, 3000);
 };
 
 const onRollChange = () => e => {
@@ -44,6 +49,7 @@ export default compose(
   withState("isOpen", "setIsOpen", false),
   withState("elements", "setElements", Immutable.List()),
   withState("resultIndex", "setResultIndex", 0),
+  withState("isRolling", "setIsRolling", true),
   withState("speedRoll", "setSpeedRoll", 500),
   withHandlers({
     fetchElementList,

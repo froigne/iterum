@@ -16,26 +16,23 @@ export const HomePage = ({
   onRoll,
   onRollChange,
   resultIndex,
+  isRolling,
   speedRoll
 }) => (
   <div>
-    {isLoading ? (
-      <div>load</div>
-    ) : (
-      <Layout>
-        <Header />
-        <Flex direction="row" size={1} middle center>
-          <Roller
-            ref={c => (this._slider = c)}
-            elements={elements}
-            onClick={onRoll}
-            onChange={onRollChange}
-            autoplaySpeed={speedRoll}
-            autoplay={resultIndex >= 0}
-          />
-        </Flex>
-      </Layout>
-    )}
+    <Layout>
+      <Header />
+      <Flex direction="row" size={1} middle center>
+        <Roller
+          elements={elements}
+          onClick={onRoll}
+          onChange={onRollChange}
+          autoplaySpeed={speedRoll}
+          autoplay={isRolling}
+          slickGoTo={resultIndex}
+        />
+      </Flex>
+    </Layout>
   </div>
 );
 
@@ -48,7 +45,8 @@ HomePage.propTypes = {
   onRoll: PropTypes.func.isRequired,
   onRollChange: PropTypes.func.isRequired,
   speedRoll: PropTypes.number.isRequired,
-  resultIndex: PropTypes.number
+  resultIndex: PropTypes.number.isRequired,
+  isRolling: PropTypes.bool.isRequired
 };
 
 export default HomePage;
