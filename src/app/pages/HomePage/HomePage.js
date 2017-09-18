@@ -4,7 +4,7 @@ import ImmutablePropTypes from "react-immutable-proptypes";
 import Layout from "app/components/Layout";
 import PropTypes from "prop-types";
 import React from "react";
-import Roller from "app/components/Roller";
+import Shuffle from "app/components/UI/Shuffle";
 
 export const HomePage = ({
   translate,
@@ -26,14 +26,9 @@ export const HomePage = ({
       <Layout>
         <Header />
         <Flex direction="row" size={1} middle center onClick={onRoll}>
-          <Roller
-            onClick={onRoll}
-            elements={elements}
-            onChange={onRollChange}
-            rollSpeed={rollSpeed}
-            isRolling={isRolling}
-            rollResult={rollResult}
-          />
+          <Shuffle replacements="$$$$$$$$$$$$)%/](€!\#[&?)" fps={60} factor={5}>
+            Shuffle text
+          </Shuffle>
         </Flex>
       </Layout>
     )}
