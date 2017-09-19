@@ -5,15 +5,19 @@
 }
 
 .btnIcon {
-  color: $primary-color;
-  border-radius: 3px;
+  color: $text-color;
+  background: $secondary-text-color;
+  border-radius: 50%;
   cursor: pointer;
-  font-size: 22px;
-  height: 28px;
-  width: 28px;
-  padding: 3px;
+  font-size: 1.5em;
+  width: 60px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  transition: background .3s ease-in-out;
 }
 
 .btnIcon:hover {
-  background: $secondary-color;
+  background: $primary-color;
 }
