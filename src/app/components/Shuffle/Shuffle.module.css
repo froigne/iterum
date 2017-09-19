@@ -5,21 +5,33 @@
     transform: scale(2); } }
 
 .shuffleContainer {
-  text-align: center;
-  width: 100%; }
-
-.shuffleContainer {
-  text-align: center;
-  width: 100%; }
+  text-align: center; }
 
 .shuffle__content {
   position: relative; }
 
-.shuffle__mixer {
-  font-size: 5em;
-  transition: transform 0.3s ease-in; }
+.shuffle__mixerContainer {
+  transition: transform .3s ease-in; }
 
-.shuffle__btnContainer {
+.shuffle__mixer {
+  font-size: 5em; }
+
+.shuffle__btn__actions {
+  padding: 0 10px;
+  line-height: 1;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.3);
+  transition: opacity .1s ease-in; }
+  .shuffle__btn__actions .shuffle__btn__choose,
+  .shuffle__btn__actions .shuffle__btn__reroll {
+    cursor: pointer;
+    transition: transform .1s ease-in; }
+  .shuffle__btn__actions .shuffle__btn__choose {
+    transform: translateX(-15px); }
+  .shuffle__btn__actions .shuffle__btn__reroll {
+    transform: translateX(15px); }
+
+.shuffle__btn__validateContainer {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -28,13 +40,24 @@
 .shuffle__btn__validate {
   opacity: 0;
   transform: scale(0);
-  transition: transform 0.3s ease-in; }
+  transition: transform .3s ease-in; }
 
-.shuffle__done .shuffle__mixer {
+.shuffle__done .shuffle__mixerContainer {
   transform: translateY(100%);
-  transition: transform 0.8s ease-in 1s; }
+  transition: transform .8s ease-in 1s; }
 
 .shuffle__done .shuffle__btn__validate {
   opacity: 1;
   transform: scale(1);
-  transition: transform 0.3s ease-in 1.5s, opacity 0.5s ease-in 1.5s; }
+  transition: transform .3s ease-in 1.5s, opacity .5s ease-in 1.5s; }
+
+.shuffle__done .shuffle__btn__actions {
+  opacity: 1;
+  transition: opacity .3s ease-out 2s; }
+  .shuffle__done .shuffle__btn__actions .shuffle__btn__choose,
+  .shuffle__done .shuffle__btn__actions .shuffle__btn__reroll {
+    transform: translateX(0);
+    transition: transform .3s ease-out 2s, color .1s ease-in; }
+    .shuffle__done .shuffle__btn__actions .shuffle__btn__choose:hover,
+    .shuffle__done .shuffle__btn__actions .shuffle__btn__reroll:hover {
+      color: #FFF; }

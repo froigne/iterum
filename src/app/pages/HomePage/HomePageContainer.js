@@ -24,7 +24,7 @@ const onShuffle = ({ elements, setShuffleResult, setIsShuffleFinish }) => e => {
   const rollIndex = Math.floor(Math.random() * (elements.size - 1));
 
   setIsShuffleFinish(false);
-  setShuffleResult(elements.get(rollIndex));
+  setTimeout(() => setShuffleResult(elements.get(rollIndex)), 300);
 };
 
 const onShuffleProgress = ({ setIsShuffleFinish }) => progress => {
