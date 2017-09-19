@@ -1,0 +1,15 @@
+@keyframes enter {
+  0% {
+    transform: scale(0); }
+  100% {
+    transform: scale(2); } }
+
+.shuffleContainer {
+  text-align: center;
+  width: 100%;
+  font-size: 5em; }
+
+
+.btn.animate,
+.btnIcon.animate {
+  animation: enter 3s forwards; }

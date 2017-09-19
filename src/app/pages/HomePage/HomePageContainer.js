@@ -5,15 +5,10 @@ import Immutable from "immutable";
 import data from "./data.json";
 
 function componentWillMount() {
-  const { fetchElementList, setIsLoading, setIsRolling, setSpeedRoll } = this.props;
+  const { fetchElementList, setIsLoading } = this.props;
 
   fetchElementList().then(() => {
     setIsLoading(false);
-
-    setTimeout(() => {
-      setIsRolling(false);
-      setSpeedRoll(100);
-    }, 2000);
   });
 }
 
@@ -25,19 +20,17 @@ const fetchElementList = ({ setElements }) => () => {
   return Promise.resolve();
 };
 
-const onRoll = ({ elements, setRollResult, setSpeedRoll, setIsRolling }) => e => {
+const onShuffle = ({ elements, setShuffleResult, setIsShuffleFinish }) => e => {
   const rollIndex = Math.floor(Math.random() * (elements.size - 1));
 
-  setIsRolling(true);
-
-  setTimeout(() => {
-    setIsRolling(false);
-    setRollResult(rollIndex);
-  }, 3000);
+  setIsShuffleFinish(false);
+  setShuffleResult(elements.get(rollIndex));
 };
 
-const onRollChange = () => e => {
-  console.log(e);
+const onShuffleProgress = ({ setIsShuffleFinish }) => progress => {
+  if (progress.done === progress.total) {
+    setIsShuffleFinish(true);
+  }
 };
 
 const onClose = ({ setIsOpen }) => () => {
@@ -48,13 +41,12 @@ export default compose(
   withState("isLoading", "setIsLoading", true),
   withState("isOpen", "setIsOpen", false),
   withState("elements", "setElements", Immutable.List()),
-  withState("rollResult", "setRollResult", 0),
-  withState("isRolling", "setIsRolling", true),
-  withState("rollSpeed", "setSpeedRoll", 500),
+  withState("shuffleResult", "setShuffleResult", ""),
+  withState("isShuffleFinish", "setIsShuffleFinish", false),
   withHandlers({
     fetchElementList,
-    onRoll,
-    onRollChange,
+    onShuffle,
+    onShuffleProgress,
     onClose
   }),
   lifecycle({ componentWillMount }),
