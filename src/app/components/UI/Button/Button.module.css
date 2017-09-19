@@ -1,0 +1,14 @@
+.btn {
+  margin: 20px 0; }
+
+.btnIcon {
+  color: #ddca7e;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 22px;
+  height: 28px;
+  width: 28px;
+  padding: 3px; }
+
+.btnIcon:hover {
+  background: #FFF; }
