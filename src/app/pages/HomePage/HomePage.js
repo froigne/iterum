@@ -5,17 +5,29 @@ import PropTypes from "prop-types";
 import React from "react";
 import Shuffle from "app/components/Shuffle";
 
-export const HomePage = ({ translate, isLoading, onShuffle, shuffleResult, onShuffleProgress, isShuffleFinish }) => (
+export const HomePage = ({
+  translate,
+  isLoading,
+  onShuffle,
+  shuffleResult,
+  isValidate,
+  onShuffleProgress,
+  isShuffleFinish,
+  onValidate
+}) => (
   <div>
     {isLoading ? (
       <div>load</div>
     ) : (
       <Layout>
         <Header />
-        <Flex direction="row" size={1} middle center onClick={onShuffle}>
+        <Flex direction="row" size={1} middle center>
           <Shuffle
+            onShuffle={onShuffle}
             shuffleResult={shuffleResult}
             isShuffleFinish={isShuffleFinish}
+            isValidate={isValidate}
+            onValidate={onValidate}
             onShuffleProgress={onShuffleProgress}
           />
         </Flex>
@@ -28,10 +40,12 @@ HomePage.propTypes = {
   translate: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,
-  onShuffle: PropTypes.func.isRequired,
-  onShuffleProgress: PropTypes.func.isRequired,
-  shuffleResult: PropTypes.string.isRequired,
-  isShuffleFinish: PropTypes.bool
+  onShuffle: PropTypes.func,
+  onShuffleProgress: PropTypes.func,
+  onValidate: PropTypes.func,
+  shuffleResult: PropTypes.string,
+  isShuffleFinish: PropTypes.bool,
+  isValidate: PropTypes.bool
 };
 
 export default HomePage;

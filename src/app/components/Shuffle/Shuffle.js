@@ -6,12 +6,22 @@ import React from "react";
 import classes from "./Shuffle.module.css";
 import classnames from "classnames";
 
-export const Shuffle = ({ isShuffleFinish, shuffleResult, onShuffleProgress, ...props }) => (
+export const Shuffle = ({
+  isShuffleFinish,
+  shuffleResult,
+  onShuffleProgress,
+  onShuffle,
+  onValidate,
+  isValidate,
+  ...props
+}) => (
   <div className={classes.shuffleContainer}>
     {!shuffleResult ? (
-      <Mixer className={classes.shuffle__mixer} replacements=")%/](€!\#[&?)" fps={60} factor={1}>
-        Shuffle text
-      </Mixer>
+      <div onClick={onShuffle}>
+        <Mixer className={classes.shuffle__mixer} replacements=")%/](€!\#[&?)" fps={60} factor={1}>
+          Shuffle text
+        </Mixer>
+      </div>
     ) : (
       <div
         className={classnames(classes.shuffle__content, {
@@ -19,7 +29,14 @@ export const Shuffle = ({ isShuffleFinish, shuffleResult, onShuffleProgress, ...
         })}
       >
         <div className={classes.shuffle__btn__validateContainer}>
-          <Button.Icon className={classes.shuffle__btn__validate}>thumb_up</Button.Icon>
+          <Button.Icon
+            className={classnames(classes.shuffle__btn__validate, {
+              [classes.isValidate]: isValidate
+            })}
+            onClick={onValidate}
+          >
+            thumb_up
+          </Button.Icon>
         </div>
         <div className={classes.shuffle__mixerContainer}>
           <Mixer
@@ -33,7 +50,9 @@ export const Shuffle = ({ isShuffleFinish, shuffleResult, onShuffleProgress, ...
           </Mixer>
           <Flex direction="row" space="between" center className={classes.shuffle__btn__actions}>
             <div className={classes.shuffle__btn__choose}>Je choisis</div>
-            <div className={classes.shuffle__btn__reroll}>Je relance</div>
+            <div className={classes.shuffle__btn__reroll} onClick={onShuffle}>
+              Je relance
+            </div>
           </Flex>
         </div>
       </div>
@@ -44,7 +63,10 @@ export const Shuffle = ({ isShuffleFinish, shuffleResult, onShuffleProgress, ...
 Shuffle.propTypes = {
   onShuffleProgress: PropTypes.func.isRequired,
   shuffleResult: PropTypes.string.isRequired,
-  isShuffleFinish: PropTypes.bool
+  onShuffle: PropTypes.func.isRequired,
+  isShuffleFinish: PropTypes.bool.isRequired,
+  isValidate: PropTypes.bool.isRequired,
+  onValidate: PropTypes.func.isRequired
 };
 
 export default Shuffle;

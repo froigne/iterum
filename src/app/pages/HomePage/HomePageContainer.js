@@ -20,17 +20,24 @@ const fetchElementList = ({ setElements }) => () => {
   return Promise.resolve();
 };
 
-const onShuffle = ({ elements, setShuffleResult, setIsShuffleFinish }) => e => {
+const onShuffle = ({ elements, setShuffleResult, setIsShuffleFinish, setIsValidate }) => e => {
   const rollIndex = Math.floor(Math.random() * (elements.size - 1));
 
   setIsShuffleFinish(false);
-  setTimeout(() => setShuffleResult(elements.get(rollIndex)), 300);
+  setTimeout(() => {
+    setIsValidate(false);
+    setShuffleResult(elements.get(rollIndex));
+  }, 300);
 };
 
 const onShuffleProgress = ({ setIsShuffleFinish }) => progress => {
   if (progress.done === progress.total) {
     setIsShuffleFinish(true);
   }
+};
+
+const onValidate = ({ setIsValidate }) => () => {
+  setIsValidate(true);
 };
 
 const onClose = ({ setIsOpen }) => () => {
@@ -43,10 +50,12 @@ export default compose(
   withState("elements", "setElements", Immutable.List()),
   withState("shuffleResult", "setShuffleResult", ""),
   withState("isShuffleFinish", "setIsShuffleFinish", false),
+  withState("isValidate", "setIsValidate", false),
   withHandlers({
     fetchElementList,
     onShuffle,
     onShuffleProgress,
+    onValidate,
     onClose
   }),
   lifecycle({ componentWillMount }),

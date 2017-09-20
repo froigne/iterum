@@ -15,9 +15,10 @@
   justify-content: center;
   align-items: center;
   display: flex;
-  transition: background .3s ease-in-out;
-}
+  border: none;
 
-.btnIcon:hover {
-  background: $primary-color;
+  &:focus,
+  &:active {
+    outline: none;
+  }
 }

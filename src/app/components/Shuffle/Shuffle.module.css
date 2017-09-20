@@ -1,8 +1,8 @@
-@keyframes enter {
+@keyframes rescaling {
   0% {
     transform: scale(0); }
   100% {
-    transform: scale(2); } }
+    transform: scale(1); } }
 
 .shuffleContainer {
   text-align: center; }
@@ -50,6 +50,12 @@
   opacity: 1;
   transform: scale(1);
   transition: transform .3s ease-in 1.5s, opacity .5s ease-in 1.5s; }
+  .shuffle__done .shuffle__btn__validate.isValidate {
+    background-color: #ddca7e;
+    animation: rescaling 0.6s cubic-bezier(0.19, 1, 0.22, 1); }
+    .shuffle__done .shuffle__btn__validate.isValidate > i {
+      transform: scale(0);
+      animation: rescaling 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s forwards; }
 
 .shuffle__done .shuffle__btn__actions {
   opacity: 1;
