@@ -1,4 +1,5 @@
 import Flex from "app/components/UI/Flex";
+import Footer from "app/components/Footer";
 import Header from "app/components/Header";
 import Layout from "app/components/Layout";
 import PropTypes from "prop-types";
@@ -31,6 +32,7 @@ export const HomePage = ({
             onShuffleProgress={onShuffleProgress}
           />
         </Flex>
+        <Footer />
       </Layout>
     )}
   </div>
