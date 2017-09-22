@@ -13,9 +13,10 @@ export const Shuffle = ({
   onShuffle,
   onValidate,
   isValidate,
-  ...props
+  onPanelOpen,
+  isOpen
 }) => (
-  <div className={classes.shuffleContainer}>
+  <Flex direction="row" size={1} middle center className={classes.shuffleContainer}>
     {!shuffleResult ? (
       <div onClick={onShuffle}>
         <Mixer className={classes.shuffle__mixer} replacements=")%/](€!\#[&?)" fps={60} factor={1}>
@@ -57,7 +58,12 @@ export const Shuffle = ({
         </div>
       </div>
     )}
-  </div>
+
+    <Button.Float
+      className={classnames(classes.shuffle__btn__panel, { [classes.panel__isOpen]: isOpen })}
+      onClick={onPanelOpen}
+    />
+  </Flex>
 );
 
 Shuffle.propTypes = {
@@ -66,7 +72,9 @@ Shuffle.propTypes = {
   onShuffle: PropTypes.func.isRequired,
   isShuffleFinish: PropTypes.bool.isRequired,
   isValidate: PropTypes.bool.isRequired,
-  onValidate: PropTypes.func.isRequired
+  onValidate: PropTypes.func.isRequired,
+  onPanelOpen: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired
 };
 
 export default Shuffle;

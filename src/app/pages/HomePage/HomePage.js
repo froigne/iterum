@@ -1,7 +1,7 @@
-import Flex from "app/components/UI/Flex";
 import Footer from "app/components/Footer";
 import Header from "app/components/Header";
 import Layout from "app/components/Layout";
+import Panel from "app/components/Panel";
 import PropTypes from "prop-types";
 import React from "react";
 import Shuffle from "app/components/Shuffle";
@@ -14,7 +14,10 @@ export const HomePage = ({
   isValidate,
   onShuffleProgress,
   isShuffleFinish,
-  onValidate
+  onValidate,
+  isOpen,
+  onPanelOpen,
+  onPanelClose
 }) => (
   <div>
     {isLoading ? (
@@ -22,16 +25,20 @@ export const HomePage = ({
     ) : (
       <Layout>
         <Header />
-        <Flex direction="row" size={1} middle center>
-          <Shuffle
-            onShuffle={onShuffle}
-            shuffleResult={shuffleResult}
-            isShuffleFinish={isShuffleFinish}
-            isValidate={isValidate}
-            onValidate={onValidate}
-            onShuffleProgress={onShuffleProgress}
-          />
-        </Flex>
+
+        <Shuffle
+          onShuffle={onShuffle}
+          shuffleResult={shuffleResult}
+          isShuffleFinish={isShuffleFinish}
+          isValidate={isValidate}
+          onValidate={onValidate}
+          onShuffleProgress={onShuffleProgress}
+          onPanelOpen={onPanelOpen}
+          isOpen={isOpen}
+        />
+
+        <Panel open={isOpen} onRequestChange={onPanelClose} title={translate("What my choice ?")} />
+
         <Footer />
       </Layout>
     )}
@@ -41,7 +48,9 @@ export const HomePage = ({
 HomePage.propTypes = {
   translate: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  isOpen: PropTypes.bool.isRequired,
+  isOpen: PropTypes.bool,
+  onPanelOpen: PropTypes.func,
+  onPanelClose: PropTypes.func,
   onShuffle: PropTypes.func,
   onShuffleProgress: PropTypes.func,
   onValidate: PropTypes.func,

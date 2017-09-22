@@ -50,7 +50,11 @@ const onValidate = ({ setIsValidate }) => () => {
   setIsValidate(true);
 };
 
-const onClose = ({ setIsOpen }) => () => {
+const onPanelOpen = ({ setIsOpen }) => () => {
+  setIsOpen(true);
+};
+
+const onPanelClose = ({ setIsOpen }) => () => {
   setIsOpen(false);
 };
 
@@ -69,7 +73,8 @@ export default compose(
     onShuffle,
     onShuffleProgress,
     onValidate,
-    onClose
+    onPanelOpen,
+    onPanelClose
   }),
   lifecycle({ componentWillMount }),
   withTranslator
