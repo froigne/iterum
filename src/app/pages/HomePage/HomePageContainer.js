@@ -20,13 +20,23 @@ const fetchElementList = ({ setElements }) => () => {
   return Promise.resolve();
 };
 
-const onShuffle = ({ elements, setShuffleResult, setIsShuffleFinish, setIsValidate }) => e => {
-  const rollIndex = Math.floor(Math.random() * (elements.size - 1));
+const roll = ({ elements }) => () => {
+  const rollIndex = Math.floor(Math.random() * elements.size);
+
+  return elements.get(rollIndex);
+};
+
+const onShuffle = ({ roll, setShuffleResult, setIsShuffleFinish, shuffleResult, setIsValidate }) => e => {
+  let result = roll();
+
+  while (shuffleResult === result) {
+    result = roll();
+  }
 
   setIsShuffleFinish(false);
   setTimeout(() => {
     setIsValidate(false);
-    setShuffleResult(elements.get(rollIndex));
+    setShuffleResult(result);
   }, 300);
 };
 
@@ -51,6 +61,9 @@ export default compose(
   withState("shuffleResult", "setShuffleResult", ""),
   withState("isShuffleFinish", "setIsShuffleFinish", false),
   withState("isValidate", "setIsValidate", false),
+  withHandlers({
+    roll
+  }),
   withHandlers({
     fetchElementList,
     onShuffle,
