@@ -1,4 +1,4 @@
-import { List as ListMaterial } from "material-ui/List";
+import { List as ListMaterial } from "material-ui";
 import PropTypes from "prop-types";
 import React from "react";
 import classes from "./List.module.css";

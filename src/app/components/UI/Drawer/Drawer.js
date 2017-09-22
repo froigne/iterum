@@ -1,4 +1,4 @@
-import { Drawer as DrawerMaterial } from "material-ui/Drawer";
+import { Drawer as DrawerMaterial } from "material-ui";
 import PropTypes from "prop-types";
 import React from "react";
 import classes from "./Drawer.module.css";
