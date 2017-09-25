@@ -16,7 +16,13 @@ export const Shuffle = ({
   onPanelOpen,
   isOpen
 }) => (
-  <Flex direction="row" size={1} middle center className={classes.shuffleContainer}>
+  <Flex
+    direction="row"
+    size={1}
+    middle
+    center
+    className={classnames(classes.shuffleContainer, { [classes.panel__isOpen]: isOpen })}
+  >
     {!shuffleResult ? (
       <div onClick={onShuffle}>
         <Mixer className={classes.shuffle__mixer} replacements=")%/](€!\#[&?)" fps={60} factor={1}>
@@ -61,10 +67,7 @@ export const Shuffle = ({
       </div>
     )}
 
-    <Button.Float
-      className={classnames(classes.shuffle__btn__panel, { [classes.panel__isOpen]: isOpen })}
-      onClick={onPanelOpen}
-    >
+    <Button.Float className={classes.shuffle__btn__panel} onClick={onPanelOpen}>
       list
     </Button.Float>
   </Flex>

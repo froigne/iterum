@@ -50,8 +50,6 @@
   position: absolute;
   bottom: -28px;
   right: 80px; }
-  .shuffle__btn__panel.panel__isOpen {
-    transform: scale(0); }
 
 .shuffle__done .shuffle__mixerContainer {
   transform: translateY(100%);
@@ -75,3 +73,6 @@
   .shuffle__done.isValidate .shuffle__btn__validate > i {
     transform: scale(0);
     animation: rescaling 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s forwards; }
+
+.panel__isOpen .shuffle__btn__panel {
+  transform: scale(0); }
