@@ -26,16 +26,12 @@ export const Shuffle = ({
     ) : (
       <div
         className={classnames(classes.shuffle__content, {
-          [classes.shuffle__done]: isShuffleFinish
+          [classes.shuffle__done]: isShuffleFinish,
+          [classes.isValidate]: isValidate
         })}
       >
         <div className={classes.shuffle__btn__validateContainer}>
-          <Button.Icon
-            className={classnames(classes.shuffle__btn__validate, {
-              [classes.isValidate]: isValidate
-            })}
-            onClick={onValidate}
-          >
+          <Button.Icon className={classnames(classes.shuffle__btn__validate)} onClick={onValidate}>
             thumb_up
           </Button.Icon>
         </div>
@@ -50,10 +46,16 @@ export const Shuffle = ({
             {shuffleResult}
           </Mixer>
           <Flex direction="row" space="between" center className={classes.shuffle__btn__actions}>
-            <div className={classes.shuffle__btn__choose}>Je choisis</div>
-            <div className={classes.shuffle__btn__reroll} onClick={onShuffle}>
+            <button className={classes.shuffle__btn__choose} disabled={isShuffleFinish && isValidate}>
+              Je choisis
+            </button>
+            <button
+              className={classes.shuffle__btn__reroll}
+              onClick={onShuffle}
+              disabled={isShuffleFinish && isValidate}
+            >
               Je relance
-            </div>
+            </button>
           </Flex>
         </div>
       </div>

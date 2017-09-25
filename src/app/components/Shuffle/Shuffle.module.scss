@@ -23,15 +23,21 @@
 
 .shuffle__btn__actions {
   padding: 0 10px;
-  line-height: 1;
-  opacity: 0;
-  color: $secondary-text-color;
-  transition: opacity .1s ease-in;
 
   .shuffle__btn__choose,
   .shuffle__btn__reroll {
-    cursor: pointer;
-    transition: transform .1s ease-in;
+    font-size: inherit;
+    opacity: 0;
+    line-height: 1;
+    transition: transform .1s ease-in, opacity .1s ease-in, color .1s ease-in;
+    background: none;
+    border: none;
+    color: $secondary-text-color;
+
+    &:hover, &:active, &:focus {
+      outline: none;
+      color: $text-color;
+    }
   }
 
   .shuffle__btn__choose {
@@ -77,30 +83,29 @@
     opacity: 1;
     transform: scale(1);
     transition: transform .3s ease-in 1.5s, opacity .3s ease-in 1.5s;
+  }
 
-    &.isValidate {
-      background-color: $primary-color;
-      animation: rescaling .6s cubic-bezier(0.19, 1, 0.22, 1);
-
-     &> i {
-      transform: scale(0);
-      animation: rescaling .65s cubic-bezier(0.175, 0.885, 0.32, 1.275) .2s forwards;
-     }
+  &:not(.isValidate) {
+    .shuffle__btn__actions {
+      .shuffle__btn__choose,
+      .shuffle__btn__reroll {
+        opacity: 1;
+        cursor: pointer;
+        transform: translateX(0);
+        transition: transform .3s ease-out 2s, opacity .3s ease-out 2s;
+      }
     }
   }
 
-  .shuffle__btn__actions {
-    opacity: 1;
-    transition: opacity .3s ease-out 2s;
+  &.isValidate {
+    .shuffle__btn__validate {
+      background-color: $primary-color;
+      animation: rescaling .6s cubic-bezier(0.19, 1, 0.22, 1);
 
-    .shuffle__btn__choose,
-    .shuffle__btn__reroll {
-      transform: translateX(0);
-      transition: transform .3s ease-out 2s, color .1s ease-in;
-
-      &:hover {
-        color: $text-color;
-      }
+      &> i {
+        transform: scale(0);
+        animation: rescaling .65s cubic-bezier(0.175, 0.885, 0.32, 1.275) .2s forwards;
+       }
     }
   }
 }
