@@ -64,7 +64,9 @@ export const Shuffle = ({
     <Button.Float
       className={classnames(classes.shuffle__btn__panel, { [classes.panel__isOpen]: isOpen })}
       onClick={onPanelOpen}
-    />
+    >
+      list
+    </Button.Float>
   </Flex>
 );
 
