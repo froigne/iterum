@@ -1,14 +1,16 @@
-import { compose, lifecycle, withHandlers, withState } from "recompose";
+import { compose, lifecycle, withHandlers, withProps, withState } from "recompose";
 import { withTranslator } from "app/decorators";
 import HomePage from "./HomePage";
 import Immutable from "immutable";
 import data from "./data.json";
 
 function componentWillMount() {
-  const { fetchElementList, setIsLoading } = this.props;
+  const { fetchElementList, setIsLoading, setCheckList } = this.props;
 
-  fetchElementList().then(() => {
+  fetchElementList().then(response => {
     setIsLoading(false);
+    const checkList = Immutable.fromJS([...Array(response.size)].map((x, index) => true));
+    setCheckList(checkList);
   });
 }
 
@@ -17,13 +19,14 @@ const fetchElementList = ({ setElements }) => () => {
 
   setElements(elements);
 
-  return Promise.resolve();
+  return Promise.resolve(elements);
 };
 
-const roll = ({ elements }) => () => {
-  const rollIndex = Math.floor(Math.random() * elements.size);
+const roll = ({ choiceList }) => () => {
+  const activeList = choiceList.filter(item => item.get("active") === true);
+  const rollIndex = Math.floor(Math.random() * activeList.size);
 
-  return elements.get(rollIndex);
+  return activeList.getIn([rollIndex, "name"]);
 };
 
 const onShuffle = ({ roll, setShuffleResult, setIsShuffleFinish, shuffleResult, setIsValidate }) => e => {
@@ -58,13 +61,28 @@ const onPanelClose = ({ setIsOpen }) => () => {
   setIsOpen(false);
 };
 
+const onCheck = ({ setCheckList, checkList }) => index => {
+  setCheckList(checkList.update(index, value => !value));
+};
+
 export default compose(
   withState("isLoading", "setIsLoading", true),
   withState("isOpen", "setIsOpen", false),
   withState("elements", "setElements", Immutable.List()),
   withState("shuffleResult", "setShuffleResult", ""),
   withState("isShuffleFinish", "setIsShuffleFinish", false),
+  withState("checkList", "setCheckList", Immutable.List()),
   withState("isValidate", "setIsValidate", false),
+  withProps(({ elements, checkList }) => ({
+    choiceList: Immutable.fromJS(
+      elements.map((element, index) =>
+        Immutable.fromJS({
+          name: element,
+          active: checkList.get(index)
+        })
+      )
+    )
+  })),
   withHandlers({
     roll
   }),
@@ -74,7 +92,8 @@ export default compose(
     onShuffleProgress,
     onValidate,
     onPanelOpen,
-    onPanelClose
+    onPanelClose,
+    onCheck
   }),
   lifecycle({ componentWillMount }),
   withTranslator

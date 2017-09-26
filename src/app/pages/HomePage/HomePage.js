@@ -17,7 +17,9 @@ export const HomePage = ({
   onValidate,
   isOpen,
   onPanelOpen,
-  onPanelClose
+  onPanelClose,
+  choiceList,
+  onCheck
 }) => (
   <div>
     {isLoading ? (
@@ -37,7 +39,13 @@ export const HomePage = ({
           isOpen={isOpen}
         />
 
-        <Panel open={isOpen} onRequestChange={onPanelClose} title={translate("What my choice ?")} />
+        <Panel
+          open={isOpen}
+          onRequestChange={onPanelClose}
+          title={translate("What my choice ?")}
+          onCheck={onCheck}
+          choiceList={choiceList}
+        />
 
         <Footer />
       </Layout>
