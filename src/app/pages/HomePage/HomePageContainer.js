@@ -5,14 +5,18 @@ import Immutable from "immutable";
 import data from "./data.json";
 
 function componentWillMount() {
-  const { fetchElementList, setIsLoading, setCheckList } = this.props;
+  const { fetchElementList, setIsLoading } = this.props;
 
   fetchElementList().then(response => {
     setIsLoading(false);
-    const checkList = Immutable.fromJS([...Array(response.size)].map((x, index) => true));
-    setCheckList(checkList);
+    prepareCheckList(response);
   });
 }
+
+const prepareCheckList = ({ setCheckList }) => list => {
+  const checkList = Immutable.fromJS([...Array(list.size)].map((x, index) => true));
+  setCheckList(checkList);
+};
 
 const fetchElementList = ({ setElements }) => () => {
   const elements = Immutable.fromJS(data);
@@ -65,6 +69,10 @@ const onCheck = ({ setCheckList, checkList }) => index => {
   setCheckList(checkList.update(index, value => !value));
 };
 
+const onChekAll = ({ setCheckList, checkList, setIsAllChecked, isAllChecked }) => () => {
+  setIsAllChecked(!isAllChecked);
+};
+
 export default compose(
   withState("isLoading", "setIsLoading", true),
   withState("isOpen", "setIsOpen", false),
@@ -72,6 +80,7 @@ export default compose(
   withState("shuffleResult", "setShuffleResult", ""),
   withState("isShuffleFinish", "setIsShuffleFinish", false),
   withState("checkList", "setCheckList", Immutable.List()),
+  withState("isAllChecked", "setIsAllChecked", true),
   withState("isValidate", "setIsValidate", false),
   withProps(({ elements, checkList }) => ({
     choiceList: Immutable.fromJS(
@@ -84,7 +93,8 @@ export default compose(
     )
   })),
   withHandlers({
-    roll
+    roll,
+    prepareCheckList
   }),
   withHandlers({
     fetchElementList,
@@ -93,7 +103,8 @@ export default compose(
     onValidate,
     onPanelOpen,
     onPanelClose,
-    onCheck
+    onCheck,
+    onChekAll
   }),
   lifecycle({ componentWillMount }),
   withTranslator

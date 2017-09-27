@@ -1,1 +1,38 @@
 @import "app/components/Theme.scss";
+
+.panel__content {
+  height: 100%;
+}
+
+.panel__listContainer {
+  overflow: auto;
+}
+
+.panel__btn__checkall {
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 15px 0;
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    background: $primary-color;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform .3s cubic-bezier(.4,0,.5,1);
+  }
+
+  &.isAllChecked {
+    &::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}

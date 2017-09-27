@@ -19,6 +19,8 @@ export const HomePage = ({
   onPanelOpen,
   onPanelClose,
   choiceList,
+  onChekAll,
+  isAllChecked,
   onCheck
 }) => (
   <div>
@@ -44,7 +46,9 @@ export const HomePage = ({
           onRequestChange={onPanelClose}
           title={translate("What my choice ?")}
           onCheck={onCheck}
+          onChekAll={onChekAll}
           choiceList={choiceList}
+          isAllChecked={isAllChecked}
         />
 
         <Footer />
@@ -62,9 +66,11 @@ HomePage.propTypes = {
   onShuffle: PropTypes.func,
   onShuffleProgress: PropTypes.func,
   onValidate: PropTypes.func,
+  onChekAll: PropTypes.func,
   shuffleResult: PropTypes.string,
   isShuffleFinish: PropTypes.bool,
-  isValidate: PropTypes.bool
+  isValidate: PropTypes.bool,
+  isAllChecked: PropTypes.bool
 };
 
 export default HomePage;

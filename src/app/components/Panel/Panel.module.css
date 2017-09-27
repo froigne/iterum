@@ -1,0 +1,27 @@
+.panel__content {
+  height: 100%; }
+
+.panel__listContainer {
+  overflow: auto; }
+
+.panel__btn__checkall {
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 15px 0;
+  overflow: hidden;
+  position: relative; }
+  .panel__btn__checkall::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    background: #ddca7e;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.5, 1); }
+  .panel__btn__checkall.isAllChecked::before {
+    transform: translate(-50%, -50%) scale(1); }
