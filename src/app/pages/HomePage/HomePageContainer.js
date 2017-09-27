@@ -5,7 +5,7 @@ import Immutable from "immutable";
 import data from "./data.json";
 
 function componentWillMount() {
-  const { fetchElementList, setIsLoading } = this.props;
+  const { fetchElementList, setIsLoading, prepareCheckList } = this.props;
 
   fetchElementList().then(response => {
     setIsLoading(false);
