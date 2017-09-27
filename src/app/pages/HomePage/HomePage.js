@@ -19,9 +19,9 @@ export const HomePage = ({
   onPanelOpen,
   onPanelClose,
   choiceList,
-  onChekAll,
+  onToggleCheckAll,
   isAllChecked,
-  onCheck
+  onToggleCheck
 }) => (
   <div>
     {isLoading ? (
@@ -45,8 +45,8 @@ export const HomePage = ({
           open={isOpen}
           onRequestChange={onPanelClose}
           title={translate("What my choice ?")}
-          onCheck={onCheck}
-          onChekAll={onChekAll}
+          onToggleCheck={onToggleCheck}
+          onToggleCheckAll={onToggleCheckAll}
           choiceList={choiceList}
           isAllChecked={isAllChecked}
         />
@@ -66,7 +66,7 @@ HomePage.propTypes = {
   onShuffle: PropTypes.func,
   onShuffleProgress: PropTypes.func,
   onValidate: PropTypes.func,
-  onChekAll: PropTypes.func,
+  onToggleCheckAll: PropTypes.func,
   shuffleResult: PropTypes.string,
   isShuffleFinish: PropTypes.bool,
   isValidate: PropTypes.bool,

@@ -10,7 +10,7 @@ import Subheader from "app/components/UI/Subheader";
 import classes from "./Panel.module.css";
 import classnames from "classnames";
 
-export const Panel = ({ className, title, choiceList, onCheck, onChekAll, isAllChecked, ...props }) => (
+export const Panel = ({ className, title, choiceList, onToggleCheck, onToggleCheckAll, isAllChecked, ...props }) => (
   <Drawer className={classnames(className, classes.panelContainer)} docked={false} openSecondary={true} {...props}>
     <Flex direction="column" className={classes.panel__content}>
       <Subheader>{title}</Subheader>
@@ -21,7 +21,7 @@ export const Panel = ({ className, title, choiceList, onCheck, onChekAll, isAllC
             .map(([index, choiceItem]) => (
               <ListItem
                 key={index}
-                leftCheckbox={<Checkbox checked={choiceItem.get("active")} onCheck={() => onCheck(index)} />}
+                leftCheckbox={<Checkbox checked={choiceItem.get("active")} onCheck={() => onToggleCheck(index)} />}
                 primaryText={choiceItem.get("name")}
               />
             ))}
@@ -29,7 +29,7 @@ export const Panel = ({ className, title, choiceList, onCheck, onChekAll, isAllC
       </Flex>
       <div
         className={classnames(classes.panel__btn__checkall, { [classes.isAllChecked]: isAllChecked })}
-        onClick={onChekAll}
+        onClick={onToggleCheckAll}
       >
         Tout sélectionner
       </div>
@@ -39,8 +39,8 @@ export const Panel = ({ className, title, choiceList, onCheck, onChekAll, isAllC
 
 Panel.propTypes = {
   className: PropTypes.string,
-  onCheck: PropTypes.func.isRequired,
-  onChekAll: PropTypes.func.isRequired,
+  onToggleCheck: PropTypes.func.isRequired,
+  onToggleCheckAll: PropTypes.func.isRequired,
   choiceList: ImmutablePropTypes.listOf(ImmutablePropTypes.map).isRequired,
   title: PropTypes.string.isRequired,
   isAllChecked: PropTypes.bool.isRequired

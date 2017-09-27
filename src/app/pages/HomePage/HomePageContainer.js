@@ -9,12 +9,12 @@ function componentWillMount() {
 
   fetchElementList().then(response => {
     setIsLoading(false);
-    prepareCheckList(response);
+    prepareCheckList(response, true);
   });
 }
 
-const prepareCheckList = ({ setCheckList }) => list => {
-  const checkList = Immutable.fromJS([...Array(list.size)].map((x, index) => true));
+const prepareCheckList = ({ setCheckList }) => (list, value) => {
+  const checkList = Immutable.fromJS([...Array(list.size)].map((x, index) => value));
   setCheckList(checkList);
 };
 
@@ -65,12 +65,15 @@ const onPanelClose = ({ setIsOpen }) => () => {
   setIsOpen(false);
 };
 
-const onCheck = ({ setCheckList, checkList }) => index => {
+const onToggleCheck = ({ setCheckList, checkList }) => index => {
   setCheckList(checkList.update(index, value => !value));
 };
 
-const onChekAll = ({ setCheckList, checkList, setIsAllChecked, isAllChecked }) => () => {
-  setIsAllChecked(!isAllChecked);
+const onToggleCheckAll = ({ elements, setIsAllChecked, isAllChecked, prepareCheckList }) => () => {
+  const nextValue = !isAllChecked;
+
+  prepareCheckList(elements, nextValue);
+  setIsAllChecked(nextValue);
 };
 
 export default compose(
@@ -103,8 +106,8 @@ export default compose(
     onValidate,
     onPanelOpen,
     onPanelClose,
-    onCheck,
-    onChekAll
+    onToggleCheck,
+    onToggleCheckAll
   }),
   lifecycle({ componentWillMount }),
   withTranslator
