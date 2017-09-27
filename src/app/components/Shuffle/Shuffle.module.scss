@@ -36,6 +36,9 @@
 
     &:hover, &:active, &:focus {
       outline: none;
+    }
+
+    &:hover {
       color: $text-color;
     }
   }

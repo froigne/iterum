@@ -28,7 +28,9 @@
     .shuffle__btn__actions .shuffle__btn__reroll:hover,
     .shuffle__btn__actions .shuffle__btn__reroll:active,
     .shuffle__btn__actions .shuffle__btn__reroll:focus {
-      outline: none;
+      outline: none; }
+    .shuffle__btn__actions .shuffle__btn__choose:hover,
+    .shuffle__btn__actions .shuffle__btn__reroll:hover {
       color: #FFF; }
   .shuffle__btn__actions .shuffle__btn__choose {
     transform: translateX(-15px); }
