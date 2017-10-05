@@ -20,6 +20,7 @@
     "react-router-dom": "^4.1.1",
     "react-scripts": "github:froigne/react-scripts",
     "react-slick": "^0.15.4",
+    "react-tagcloud": "^1.2.0",
     "react-tap-event-plugin": "^2.0.1",
     "react-wrappy-text": "^1.1.1",
     "recompose": "^0.25.0",
