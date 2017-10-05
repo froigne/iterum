@@ -10,7 +10,7 @@
     "moment": "^2.18.1",
     "node-sass-chokidar": "0.0.3",
     "nuka-carousel": "^2.3.0",
-    "prop-types": "^15.5.10",
+    "prop-types": "^15.6.0",
     "qs": "^6.4.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",

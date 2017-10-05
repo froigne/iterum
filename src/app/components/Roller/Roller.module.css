@@ -1,4 +1,66 @@
-.rollerContainer {
-  text-align: center;
-  width: 100%;
-  font-size: 5em; }
+@keyframes rescaling {
+  0% {
+    transform: scale(0); }
+  100% {
+    transform: scale(1); } }
+
+.shuffle__mixerContainer {
+  transition: transform .3s ease-in; }
+
+.shuffle__btn__actions {
+  padding: 0 10px; }
+  .shuffle__btn__actions .shuffle__btn__choose,
+  .shuffle__btn__actions .shuffle__btn__reroll {
+    font-size: inherit;
+    opacity: 0;
+    line-height: 1;
+    transition: transform .1s ease-in, opacity .1s ease-in, color .1s ease-in;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.3); }
+    .shuffle__btn__actions .shuffle__btn__choose:hover, .shuffle__btn__actions .shuffle__btn__choose:active, .shuffle__btn__actions .shuffle__btn__choose:focus,
+    .shuffle__btn__actions .shuffle__btn__reroll:hover,
+    .shuffle__btn__actions .shuffle__btn__reroll:active,
+    .shuffle__btn__actions .shuffle__btn__reroll:focus {
+      outline: none; }
+    .shuffle__btn__actions .shuffle__btn__choose:hover,
+    .shuffle__btn__actions .shuffle__btn__reroll:hover {
+      color: #FFF; }
+  .shuffle__btn__actions .shuffle__btn__choose {
+    transform: translateX(-15px); }
+  .shuffle__btn__actions .shuffle__btn__reroll {
+    transform: translateX(15px); }
+
+.shuffle__btn__validateContainer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); }
+
+.shuffle__btn__validate {
+  opacity: 0;
+  transform: scale(0);
+  transition: transform .3s ease-in, opacity .3s ease-in; }
+
+.shuffle__done .shuffle__mixerContainer {
+  transform: translateY(100%);
+  transition: transform .8s ease-in 1s; }
+
+.shuffle__done .shuffle__btn__validate {
+  opacity: 1;
+  transform: scale(1);
+  transition: transform .3s ease-in 1.5s, opacity .3s ease-in 1.5s; }
+
+.shuffle__done:not(.isValidate) .shuffle__btn__actions .shuffle__btn__choose,
+.shuffle__done:not(.isValidate) .shuffle__btn__actions .shuffle__btn__reroll {
+  opacity: 1;
+  cursor: pointer;
+  transform: translateX(0);
+  transition: transform .3s ease-out 2s, opacity .3s ease-out 2s; }
+
+.shuffle__done.isValidate .shuffle__btn__validate {
+  background-color: #ddca7e;
+  animation: rescaling 0.6s cubic-bezier(0.19, 1, 0.22, 1); }
+  .shuffle__done.isValidate .shuffle__btn__validate > i {
+    transform: scale(0);
+    animation: rescaling 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s forwards; }
