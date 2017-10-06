@@ -31,8 +31,14 @@ const onValidate = ({ setIsValidate }) => () => {
   setIsValidate(true);
 };
 
-const onChoosing = ({ setIsChoosingWay }) => () => {
+const onChoosingWay = ({ setIsChoosingWay, setIsShuffleFinish }) => () => {
   setIsChoosingWay(true);
+  setIsShuffleFinish(false);
+};
+
+const onChoose = ({ setIsChoosingWay, setShuffleResult }) => result => {
+  setShuffleResult(result);
+  setIsChoosingWay(false);
 };
 
 export default compose(
@@ -47,6 +53,7 @@ export default compose(
     onShuffle,
     onShuffleProgress,
     onValidate,
-    onChoosing
+    onChoosingWay,
+    onChoose
   })
 );

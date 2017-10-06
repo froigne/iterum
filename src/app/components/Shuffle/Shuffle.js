@@ -19,7 +19,8 @@ export const Shuffle = ({
   isValidate,
   onPanelOpen,
   isOpen,
-  onChoosing,
+  onChoosingWay,
+  onChoose,
   isChoosingWay
 }) => {
   const activeList = choiceList.filter(item => item.get("active") === true);
@@ -50,7 +51,7 @@ export const Shuffle = ({
           isShuffleFinish={isShuffleFinish}
           isValidate={isValidate}
           onValidate={onValidate}
-          onChoosing={onChoosing}
+          onChoosingWay={onChoosingWay}
         />
       ) : (
         ""
@@ -62,7 +63,7 @@ export const Shuffle = ({
           maxSize={60}
           tags={activeList.toJS()}
           disableRandomColor={true}
-          onClick={tag => alert(`'${tag.value}' was selected!`)}
+          onClick={tag => onChoose(tag.value)}
         />
       ) : (
         ""
@@ -84,7 +85,8 @@ Shuffle.propTypes = {
   isValidate: PropTypes.bool,
   onValidate: PropTypes.func,
   onPanelOpen: PropTypes.func.isRequired,
-  onChoosing: PropTypes.func,
+  onChoosingWay: PropTypes.func,
+  onChoose: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   isChoosingWay: PropTypes.bool.isRequired
 };

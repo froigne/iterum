@@ -22,7 +22,8 @@ export const HomePage = ({
   onToggleCheckAll,
   isAllChecked,
   onToggleCheck,
-  onChoosing,
+  onChoosingWay,
+  onChoose,
   isChoosingWay
 }) => (
   <div>
@@ -43,7 +44,8 @@ export const HomePage = ({
           choiceList={choiceList}
           isOpen={isOpen}
           isChoosingWay={isChoosingWay}
-          onChoosing={onChoosing}
+          onChoosingWay={onChoosingWay}
+          onChoose={onChoose}
         />
 
         <Panel
@@ -76,7 +78,8 @@ HomePage.propTypes = {
   isShuffleFinish: PropTypes.bool,
   isValidate: PropTypes.bool,
   isAllChecked: PropTypes.bool,
-  onChoosing: PropTypes.func,
+  onChoosingWay: PropTypes.func,
+  onChoose: PropTypes.func,
   isChoosingWay: PropTypes.bool
 };
 

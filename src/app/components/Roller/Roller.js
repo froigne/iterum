@@ -13,7 +13,7 @@ export const Roller = ({
   onValidate,
   onShuffleProgress,
   onShuffle,
-  onChoosing
+  onChoosingWay
 }) => (
   <div
     className={classnames(classes.shuffle__content, {
@@ -37,7 +37,11 @@ export const Roller = ({
         {shuffleResult}
       </Mixer>
       <Flex direction="row" space="between" center className={classes.shuffle__btn__actions}>
-        <button className={classes.shuffle__btn__choose} onClick={onChoosing} disabled={isShuffleFinish && isValidate}>
+        <button
+          className={classes.shuffle__btn__choose}
+          onClick={onChoosingWay}
+          disabled={isShuffleFinish && isValidate}
+        >
           Je choisis
         </button>
         <button className={classes.shuffle__btn__reroll} onClick={onShuffle} disabled={isShuffleFinish && isValidate}>
@@ -55,7 +59,7 @@ Roller.propTypes = {
   isShuffleFinish: PropTypes.bool.isRequired,
   isValidate: PropTypes.bool.isRequired,
   onValidate: PropTypes.func.isRequired,
-  onChoosing: PropTypes.func.isRequired
+  onChoosingWay: PropTypes.func.isRequired
 };
 
 export default Roller;

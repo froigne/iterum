@@ -9,4 +9,11 @@
   margin: 0 15px;
   white-space: nowrap;
   display: inline-block;
+  cursor: pointer;
+  transition: color .1s ease-in, transform .1s ease-in;
+
+  &:hover {
+    color: $primary-color;
+    transform: scale(1.1);
+  }
 }
