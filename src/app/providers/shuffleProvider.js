@@ -45,7 +45,7 @@ export default compose(
   withState("shuffleResult", "setShuffleResult", ""),
   withState("isShuffleFinish", "setIsShuffleFinish", false),
   withState("isValidate", "setIsValidate", false),
-  withState("isChoosingWay", "setIsChoosingWay", true),
+  withState("isChoosingWay", "setIsChoosingWay", false),
   withHandlers({
     roll
   }),

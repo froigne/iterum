@@ -8,6 +8,7 @@ import classnames from "classnames";
 
 export const Roller = ({
   shuffleResult,
+  className,
   isShuffleFinish,
   isValidate,
   onValidate,
@@ -16,7 +17,7 @@ export const Roller = ({
   onChoosingWay
 }) => (
   <div
-    className={classnames(classes.shuffle__content, {
+    className={classnames(className, classes.shuffle__content, {
       [classes.shuffle__done]: isShuffleFinish,
       [classes.isValidate]: isValidate
     })}
@@ -53,6 +54,7 @@ export const Roller = ({
 );
 
 Roller.propTypes = {
+  className: PropTypes.string,
   onShuffleProgress: PropTypes.func.isRequired,
   shuffleResult: PropTypes.string.isRequired,
   onShuffle: PropTypes.func.isRequired,

@@ -34,7 +34,7 @@ export const Shuffle = ({
       className={classnames(classes.shuffleContainer, { [classes.panel__isOpen]: isOpen })}
     >
       {!shuffleResult ? (
-        <div onClick={onShuffle}>
+        <div className={classes.shuffle__element} onClick={onShuffle}>
           <Mixer className={classes.shuffle__mixer} replacements=")%/](€!\#[&?)" fps={60} factor={1}>
             Shuffle text
           </Mixer>
@@ -45,6 +45,7 @@ export const Shuffle = ({
 
       {shuffleResult && !isChoosingWay ? (
         <Roller
+          className={classes.shuffle__element}
           onShuffleProgress={onShuffleProgress}
           shuffleResult={shuffleResult}
           onShuffle={onShuffle}
@@ -59,6 +60,7 @@ export const Shuffle = ({
 
       {isChoosingWay ? (
         <TagCloud
+          className={classes.shuffle__element}
           minSize={35}
           maxSize={60}
           tags={activeList.toJS()}
