@@ -1,0 +1,8 @@
+.tagCloud {
+  text-align: center; }
+
+.tagCloud__item {
+  font-size: 3em;
+  margin: 0 15px;
+  white-space: nowrap;
+  display: inline-block; }
