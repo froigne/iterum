@@ -17,7 +17,6 @@ function componentWillMount() {
 
 const fetchElementList = ({ setElements }) => () => {
   const elements = Immutable.fromJS(data);
-
   setElements(elements);
 
   return Promise.resolve(elements);

@@ -22,7 +22,7 @@ export const Panel = ({ className, title, choiceList, onToggleCheck, onToggleChe
               <ListItem
                 key={index}
                 leftCheckbox={<Checkbox checked={choiceItem.get("active")} onCheck={() => onToggleCheck(index)} />}
-                primaryText={choiceItem.get("name")}
+                primaryText={choiceItem.get("value")}
               />
             ))}
         </List>

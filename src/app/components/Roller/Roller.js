@@ -6,7 +6,15 @@ import React from "react";
 import classes from "./Roller.module.css";
 import classnames from "classnames";
 
-export const Roller = ({ shuffleResult, isShuffleFinish, isValidate, onValidate, onShuffleProgress, onShuffle }) => (
+export const Roller = ({
+  shuffleResult,
+  isShuffleFinish,
+  isValidate,
+  onValidate,
+  onShuffleProgress,
+  onShuffle,
+  onChoosing
+}) => (
   <div
     className={classnames(classes.shuffle__content, {
       [classes.shuffle__done]: isShuffleFinish,
@@ -29,7 +37,7 @@ export const Roller = ({ shuffleResult, isShuffleFinish, isValidate, onValidate,
         {shuffleResult}
       </Mixer>
       <Flex direction="row" space="between" center className={classes.shuffle__btn__actions}>
-        <button className={classes.shuffle__btn__choose} disabled={isShuffleFinish && isValidate}>
+        <button className={classes.shuffle__btn__choose} onClick={onChoosing} disabled={isShuffleFinish && isValidate}>
           Je choisis
         </button>
         <button className={classes.shuffle__btn__reroll} onClick={onShuffle} disabled={isShuffleFinish && isValidate}>
@@ -46,7 +54,8 @@ Roller.propTypes = {
   onShuffle: PropTypes.func.isRequired,
   isShuffleFinish: PropTypes.bool.isRequired,
   isValidate: PropTypes.bool.isRequired,
-  onValidate: PropTypes.func.isRequired
+  onValidate: PropTypes.func.isRequired,
+  onChoosing: PropTypes.func.isRequired
 };
 
 export default Roller;

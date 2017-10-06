@@ -4,7 +4,7 @@ const roll = ({ choiceList }) => () => {
   const activeList = choiceList.filter(item => item.get("active") === true);
   const rollIndex = Math.floor(Math.random() * activeList.size);
 
-  return activeList.getIn([rollIndex, "name"]);
+  return activeList.getIn([rollIndex, "value"]);
 };
 
 const onShuffle = ({ roll, setShuffleResult, setIsShuffleFinish, shuffleResult, setIsValidate }) => e => {
@@ -31,16 +31,22 @@ const onValidate = ({ setIsValidate }) => () => {
   setIsValidate(true);
 };
 
+const onChoosing = ({ setIsChoosingWay }) => () => {
+  setIsChoosingWay(true);
+};
+
 export default compose(
   withState("shuffleResult", "setShuffleResult", ""),
   withState("isShuffleFinish", "setIsShuffleFinish", false),
   withState("isValidate", "setIsValidate", false),
+  withState("isChoosingWay", "setIsChoosingWay", true),
   withHandlers({
     roll
   }),
   withHandlers({
     onShuffle,
     onShuffleProgress,
-    onValidate
+    onValidate,
+    onChoosing
   })
 );

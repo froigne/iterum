@@ -30,14 +30,7 @@ export default compose(
   withState("checkList", "setCheckList", Immutable.List()),
   withState("isAllChecked", "setIsAllChecked", true),
   withProps(({ elements, checkList }) => ({
-    choiceList: Immutable.fromJS(
-      elements.map((element, index) =>
-        Immutable.fromJS({
-          name: element,
-          active: checkList.get(index)
-        })
-      )
-    )
+    choiceList: Immutable.fromJS(elements.map((element, index) => element.merge({ active: checkList.get(index) })))
   })),
   withHandlers({
     prepareCheckList

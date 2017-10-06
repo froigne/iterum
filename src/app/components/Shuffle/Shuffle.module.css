@@ -1,5 +1,6 @@
 .shuffleContainer {
-  position: relative; }
+  position: relative;
+  padding: 250px; }
 
 .shuffle__btn__panel {
   position: absolute;
