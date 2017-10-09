@@ -31,7 +31,7 @@ export const Panel = ({ className, title, choiceList, onToggleCheck, onToggleChe
         className={classnames(classes.panel__btn__checkall, { [classes.isAllChecked]: isAllChecked })}
         onClick={onToggleCheckAll}
       >
-        Tout sélectionner
+        Select all
       </div>
     </Flex>
   </Drawer>

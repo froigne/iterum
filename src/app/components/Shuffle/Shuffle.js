@@ -36,7 +36,7 @@ export const Shuffle = ({
       {!shuffleResult ? (
         <div className={classes.shuffle__element} onClick={onShuffle}>
           <Mixer className={classes.shuffle__mixer} replacements=")%/](€!\#[&?)" fps={60} factor={1}>
-            Shuffle text
+            I don't know what i want
           </Mixer>
         </div>
       ) : (

@@ -43,10 +43,10 @@ export const Roller = ({
           onClick={onChoosingWay}
           disabled={isShuffleFinish && isValidate}
         >
-          Je choisis
+          I choose
         </button>
         <button className={classes.shuffle__btn__reroll} onClick={onShuffle} disabled={isShuffleFinish && isValidate}>
-          Je relance
+          I retry
         </button>
       </Flex>
     </div>
