@@ -4,13 +4,13 @@
 
 .shuffleContainer {
   position: relative;
-  padding: 250px;
+  padding: 0 $gutter;
 }
 
 .shuffle__btn__panel {
   position: absolute;
   bottom: 0;
-  right: 60px;
+  right: $gutter-sm;
   transform: translateY(50%);
 }
 
@@ -21,5 +21,30 @@
 }
 
 .shuffle__element {
+  width: 100%;
   animation: appear .25s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+@media only screen and (min-width : 480px) {
+  .shuffle__element {
+    width: auto;
+  }
+}
+
+@media only screen and (min-width : 768px) {
+  .shuffle__btn__panel {
+    right: 60px;
+  }
+}
+
+@media only screen and (min-width : 1024px) {
+  .shuffleContainer {
+    padding: 0 $gutter-lg;
+  }
+}
+
+@media only screen and (min-width : 1824px) {
+  .shuffleContainer {
+    padding: 0 $gutter-lg-2x;
+  }
 }

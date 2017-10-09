@@ -1,6 +1,11 @@
 @import "app/components/Theme.scss";
 
 .footerContainer {
-  padding: $gutter $gutter-lg;
-  height: 80px;
+  padding: $gutter-sm 0;
+}
+
+@media only screen and (min-width : 768px) {
+  .footerContainer {
+    padding: $gutter 0;
+  }
 }

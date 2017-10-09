@@ -1,14 +1,14 @@
 @import "app/components/Theme.scss";
 
 .headerContainer {
-  padding: $gutter $gutter-lg;
   position: relative;
 }
 
 .header__logo {
   height: 60px;
   position: absolute;
-  left: $gutter-lg;
+  left: $gutter;
+  display: none;
 }
 
 .header__logo img {
@@ -24,13 +24,12 @@
   text-shadow: 1px 1px $black;
 }
 
-@media only screen and (min-width : 768px) {
+@media only screen and (min-width : 480px) {
   .headerContainer {
-    padding: $gutter $gutter-lg-2x;
+    padding: $gutter-sm 0;
   }
 
   .header__logo {
-    padding-right: 20px;
+    display: block;
   }
 }
-
