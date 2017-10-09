@@ -61,8 +61,8 @@ export const Shuffle = ({
       {isChoosingWay ? (
         <TagCloud
           className={classes.shuffle__element}
-          minSize={35}
-          maxSize={60}
+          minSize={5}
+          maxSize={12}
           tags={activeList.toJS()}
           disableRandomColor={true}
           onClick={tag => onChoose(tag.value)}

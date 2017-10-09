@@ -6,7 +6,7 @@ import classnames from "classnames";
 
 const tagRenderer = (tag, fontSize, color) => {
   return (
-    <span className={classes.tagCloud__item} key={tag.value} style={{ color, fontSize }}>
+    <span className={classes.tagCloud__item} key={tag.value} style={{ color, fontSize: `${fontSize}vh` }}>
       {tag.value}
     </span>
   );

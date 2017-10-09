@@ -7,14 +7,12 @@
     opacity: 1; } }
 
 .shuffleContainer {
-  position: relative;
   padding: 0 25px; }
 
 .shuffle__btn__panel {
   position: absolute;
-  bottom: 0;
-  right: 10px;
-  transform: translateY(50%); }
+  bottom: 10px;
+  right: 10px; }
 
 .panel__isOpen .shuffle__btn__panel {
   transform: scale(0); }
@@ -29,7 +27,8 @@
 
 @media only screen and (min-width: 768px) {
   .shuffle__btn__panel {
-    right: 60px; } }
+    bottom: 25px;
+    right: 25px; } }
 
 @media only screen and (min-width: 1024px) {
   .shuffleContainer {
@@ -37,4 +36,7 @@
 
 @media only screen and (min-width: 1824px) {
   .shuffleContainer {
-    padding: 0 250px; } }
+    padding: 0 250px; }
+  .shuffle__btn__panel {
+    bottom: 60px;
+    right: 60px; } }

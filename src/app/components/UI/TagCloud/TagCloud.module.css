@@ -4,10 +4,13 @@
 .tagCloud__item {
   font-size: 3em;
   margin: 0 15px;
-  white-space: nowrap;
   display: inline-block;
   cursor: pointer;
   transition: color .1s ease-in, transform .1s ease-in; }
   .tagCloud__item:hover {
     color: #ddca7e;
     transform: scale(1.1); }
+
+@media only screen and (min-width: 480px) {
+  .tagCloud__item {
+    white-space: nowrap; } }
