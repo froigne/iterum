@@ -7,12 +7,11 @@ import logo from "./logo.png";
 
 export const Header = () => (
   <Flex direction="row" middle center className={classes.headerContainer}>
-    <Link to="/" className={classes.header__logo}>
-      <img src={logo} alt="Iterum" />
+    <Link to="/">
+      <Title component="h1" className={classes.header__title}>
+        Iterum
+      </Title>
     </Link>
-    <Title component="h1" className={classes.header__title}>
-      Iterum
-    </Title>
   </Flex>
 );
 

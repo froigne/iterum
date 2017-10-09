@@ -1,15 +1,6 @@
 .headerContainer {
   position: relative; }
 
-.header__logo {
-  height: 60px;
-  position: absolute;
-  left: 25px;
-  display: none; }
-
-.header__logo img {
-  max-height: 100%; }
-
 .header__title {
   margin: 0;
   color: #ddca7e;
@@ -20,6 +11,4 @@
 
 @media only screen and (min-width: 480px) {
   .headerContainer {
-    padding: 10px 0; }
-  .header__logo {
-    display: block; } }
+    padding: 10px 0; } }
