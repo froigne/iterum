@@ -4,7 +4,7 @@ const httpClient = createHttpClient();
 
 // elements
 export const fetchElementList = (config = {}) => dispatch => {
-  const sendRequest = httpClient.get("elements?_page=1", config);
+  const sendRequest = httpClient.get("elements", config);
 
   return sendRequest;
 };
