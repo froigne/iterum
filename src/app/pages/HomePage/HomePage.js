@@ -2,7 +2,6 @@ import Footer from "app/components/Footer";
 import Header from "app/components/Header";
 import Layout from "app/components/Layout";
 import Panel from "app/components/Panel";
-import PanelButton from "app/components/PanelButton";
 import PropTypes from "prop-types";
 import React from "react";
 import Shuffle from "app/components/Shuffle";
@@ -49,16 +48,16 @@ export const HomePage = ({
         />
 
         <Panel
-          open={isOpen}
-          onRequestChange={onPanelClose}
+          isOpen={isOpen}
+          onPanelOpen={onPanelOpen}
+          onAddElement={onAddElement}
+          onPanelClose={onPanelClose}
           title={translate("What my choice ?")}
           onToggleCheck={onToggleCheck}
           onToggleCheckAll={onToggleCheckAll}
           choiceList={choiceList}
           isAllChecked={isAllChecked}
         />
-
-        <PanelButton isOpen={isOpen} onPanelOpen={onPanelOpen} onAddElement={onAddElement} />
 
         <Footer />
       </Layout>

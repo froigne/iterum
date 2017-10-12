@@ -6,6 +6,10 @@ const prepareCheckList = ({ setCheckList }) => (list, value) => {
   setCheckList(checkList);
 };
 
+const onAddElement = () => () => {
+  console.log("add");
+};
+
 const onPanelOpen = ({ setIsOpen }) => () => {
   setIsOpen(true);
 };
@@ -39,6 +43,7 @@ export default compose(
     onPanelOpen,
     onPanelClose,
     onToggleCheck,
-    onToggleCheckAll
+    onToggleCheckAll,
+    onAddElement
   })
 );
