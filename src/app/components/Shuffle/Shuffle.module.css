@@ -6,16 +6,14 @@
     transform: translateY(0);
     opacity: 1; } }
 
+@keyframes appear-rotate {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(980deg); } }
+
 .shuffleContainer {
   padding: 0 25px; }
-
-.shuffle__btn__panel {
-  position: absolute;
-  bottom: 10px;
-  right: 10px; }
-
-.panel__isOpen .shuffle__btn__panel {
-  transform: scale(0); }
 
 .shuffle__element {
   width: 100%;
@@ -25,18 +23,10 @@
   .shuffle__element {
     width: auto; } }
 
-@media only screen and (min-width: 768px) {
-  .shuffle__btn__panel {
-    bottom: 25px;
-    right: 25px; } }
-
 @media only screen and (min-width: 1024px) {
   .shuffleContainer {
     padding: 0 125px; } }
 
 @media only screen and (min-width: 1824px) {
   .shuffleContainer {
-    padding: 0 250px; }
-  .shuffle__btn__panel {
-    bottom: 60px;
-    right: 60px; } }
+    padding: 0 250px; } }

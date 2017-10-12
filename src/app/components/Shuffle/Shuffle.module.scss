@@ -1,21 +1,10 @@
 @import "app/components/Theme.scss";
 
 @include appear;
+@include appear-rotate;
 
 .shuffleContainer {
   padding: 0 $gutter;
-}
-
-.shuffle__btn__panel {
-  position: absolute;
-  bottom: $gutter-sm;
-  right: $gutter-sm;
-}
-
-.panel__isOpen {
-  .shuffle__btn__panel {
-    transform: scale(0);
-  }
 }
 
 .shuffle__element {
@@ -29,13 +18,6 @@
   }
 }
 
-@media only screen and (min-width : 768px) {
-  .shuffle__btn__panel {
-    bottom: $gutter;
-    right: $gutter;
-  }
-}
-
 @media only screen and (min-width : 1024px) {
   .shuffleContainer {
     padding: 0 $gutter-lg;
@@ -45,10 +27,5 @@
 @media only screen and (min-width : 1824px) {
   .shuffleContainer {
     padding: 0 $gutter-lg-2x;
-  }
-
-  .shuffle__btn__panel {
-    bottom: 60px;
-    right: 60px;
   }
 }

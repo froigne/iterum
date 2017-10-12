@@ -44,3 +44,14 @@ $white-grey: #eee;
     }
   }
 }
+
+@mixin appear-rotate {
+  @keyframes appear-rotate {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(980deg);
+    }
+  }
+}

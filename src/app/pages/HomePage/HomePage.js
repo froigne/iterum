@@ -2,6 +2,7 @@ import Footer from "app/components/Footer";
 import Header from "app/components/Header";
 import Layout from "app/components/Layout";
 import Panel from "app/components/Panel";
+import PanelButton from "app/components/PanelButton";
 import PropTypes from "prop-types";
 import React from "react";
 import Shuffle from "app/components/Shuffle";
@@ -18,6 +19,7 @@ export const HomePage = ({
   isOpen,
   onPanelOpen,
   onPanelClose,
+  onAddElement,
   choiceList,
   onToggleCheckAll,
   isAllChecked,
@@ -40,9 +42,7 @@ export const HomePage = ({
           isValidate={isValidate}
           onValidate={onValidate}
           onShuffleProgress={onShuffleProgress}
-          onPanelOpen={onPanelOpen}
           choiceList={choiceList}
-          isOpen={isOpen}
           isChoosingWay={isChoosingWay}
           onChoosingWay={onChoosingWay}
           onChoose={onChoose}
@@ -58,6 +58,8 @@ export const HomePage = ({
           isAllChecked={isAllChecked}
         />
 
+        <PanelButton isOpen={isOpen} onPanelOpen={onPanelOpen} onAddElement={onAddElement} />
+
         <Footer />
       </Layout>
     )}
@@ -70,6 +72,7 @@ HomePage.propTypes = {
   isOpen: PropTypes.bool,
   onPanelOpen: PropTypes.func,
   onPanelClose: PropTypes.func,
+  onAddElement: PropTypes.func,
   onShuffle: PropTypes.func,
   onShuffleProgress: PropTypes.func,
   onValidate: PropTypes.func,

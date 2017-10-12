@@ -1,4 +1,3 @@
-import Button from "app/components/UI/Button";
 import Flex from "app/components/UI/Flex";
 import ImmutablePropTypes from "react-immutable-proptypes";
 import Mixer from "app/components/UI/Mixer";
@@ -7,7 +6,6 @@ import React from "react";
 import Roller from "app/components/Roller";
 import TagCloud from "app/components/UI/TagCloud";
 import classes from "./Shuffle.module.css";
-import classnames from "classnames";
 
 export const Shuffle = ({
   choiceList,
@@ -17,8 +15,6 @@ export const Shuffle = ({
   onShuffle,
   onValidate,
   isValidate,
-  onPanelOpen,
-  isOpen,
   onChoosingWay,
   onChoose,
   isChoosingWay
@@ -26,13 +22,7 @@ export const Shuffle = ({
   const activeList = choiceList.filter(item => item.get("active") === true);
 
   return (
-    <Flex
-      direction="row"
-      size={1}
-      middle
-      center
-      className={classnames(classes.shuffleContainer, { [classes.panel__isOpen]: isOpen })}
-    >
+    <Flex direction="row" size={1} middle center className={classes.shuffleContainer}>
       {!shuffleResult ? (
         <div className={classes.shuffle__element} onClick={onShuffle}>
           <Mixer className={classes.shuffle__mixer} replacements=")%/](€!\#[&?)" fps={60} factor={1}>
@@ -70,10 +60,6 @@ export const Shuffle = ({
       ) : (
         ""
       )}
-
-      <Button.Float className={classes.shuffle__btn__panel} onClick={onPanelOpen}>
-        list
-      </Button.Float>
     </Flex>
   );
 };
@@ -86,10 +72,8 @@ Shuffle.propTypes = {
   isShuffleFinish: PropTypes.bool,
   isValidate: PropTypes.bool,
   onValidate: PropTypes.func,
-  onPanelOpen: PropTypes.func.isRequired,
   onChoosingWay: PropTypes.func,
   onChoose: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired,
   isChoosingWay: PropTypes.bool.isRequired
 };
 
