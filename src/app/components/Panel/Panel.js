@@ -23,6 +23,7 @@ export const Panel = ({
   onPanelClose,
   onAddingElement,
   isAdding,
+  addingWay,
   newElement,
   setNewElement,
   onAddElement,
@@ -43,17 +44,17 @@ export const Panel = ({
             .entrySeq()
             .map(([index, choiceItem]) => (
               <ListItem
-                className={classes.panel__list__item}
+                className={classes.panel__listItem}
                 key={index}
                 leftCheckbox={<Checkbox checked={choiceItem.get("active")} onCheck={() => onToggleCheck(index)} />}
                 primaryText={choiceItem.get("value")}
               />
             ))}
-          {isAdding ? (
+          {addingWay ? (
             <form onSubmit={onAddElement}>
               <ListItem
                 disabled={true}
-                className={classes.panel__listItem__addElement}
+                className={classnames(classes.panel__listItem__addElement, { [classes.show]: isAdding })}
                 insetChildren={true}
                 disableKeyboardFocus={true}
               >
@@ -80,10 +81,10 @@ export const Panel = ({
       </div>
     </Flex>
     <Button.Float
-      className={classnames(classes.panel__btn__add, { [classes.panel__btn__adding]: isAdding })}
-      onClick={isAdding ? onAddElement : onAddingElement}
+      className={classnames(classes.panel__btn__add, { [classes.panel__btn__adding]: addingWay })}
+      onClick={addingWay ? onAddElement : onAddingElement}
     >
-      {isAdding ? "check" : "add"}
+      {addingWay ? "check" : "add"}
     </Button.Float>
   </Drawer>
 );
@@ -97,6 +98,7 @@ Panel.propTypes = {
   isAllChecked: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,
   isAdding: PropTypes.bool.isRequired,
+  addingWay: PropTypes.bool.isRequired,
   errorAdding: PropTypes.bool.isRequired,
   onPanelClose: PropTypes.func.isRequired,
   onAddingElement: PropTypes.func,

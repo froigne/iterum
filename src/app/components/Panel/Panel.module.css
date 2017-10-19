@@ -1,6 +1,28 @@
-@keyframes appear-right {
+@keyframes appear-right-block {
   0% {
-    transform: translatex(50px);
+    transform: scale(1);
+    opacity: 0; }
+  1% {
+    transform: translateX(50px) scale(1);
+    opacity: 0; }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1; } }
+
+@keyframes disappear-right-block {
+  0% {
+    transform: translateX(0) scale(1);
+    opacity: 1; }
+  99% {
+    transform: translateX(50px) scale(1);
+    opacity: 0; }
+  100% {
+    opacity: 0;
+    transform: translateX(50px) scale(0); } }
+
+@keyframes appear-left {
+  0% {
+    transform: translatex(-50px);
     opacity: 0; }
   100% {
     transform: translateY(0);
@@ -17,7 +39,7 @@
   overflow: auto;
   overflow-x: hidden; }
 
-.panel__list__item {
+.panel__listItem {
   animation: appear-left .3s ease-in-out; }
 
 .panel__btn__checkall {
@@ -57,4 +79,9 @@
     transform: rotate(-360deg); }
 
 .panel__listItem__addElement {
-  animation: appear-right .3s ease-in-out; }
+  display: none; }
+  .panel__listItem__addElement:not(.show) {
+    animation: disappear-right-block .3s ease-in-out forwards; }
+  .panel__listItem__addElement.show {
+    display: block;
+    animation: appear-right-block .3s ease-in-out forwards; }

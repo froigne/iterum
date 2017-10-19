@@ -27,6 +27,7 @@ export const HomePage = ({
   onChoose,
   isChoosingWay,
   isAdding,
+  addingWay,
   newElement,
   setNewElement,
   onAddElement,
@@ -62,6 +63,7 @@ export const HomePage = ({
           choiceList={choiceList}
           isAllChecked={isAllChecked}
           isAdding={isAdding}
+          addingWay={addingWay}
           onAddElement={onAddElement}
           newElement={newElement}
           errorAdding={errorAdding}
@@ -93,6 +95,7 @@ HomePage.propTypes = {
   onChoose: PropTypes.func,
   isChoosingWay: PropTypes.bool,
   isAdding: PropTypes.bool,
+  addingWay: PropTypes.bool,
   newElement: PropTypes.string,
   setNewElement: PropTypes.func,
   onAddElement: PropTypes.func,

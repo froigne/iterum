@@ -1,6 +1,8 @@
 @import "app/components/Theme.scss";
 
-@include appear-right;
+@include appear-right-block;
+@include disappear-right-block;
+@include appear-left;
 
 .panel__content {
   height: 100%;
@@ -16,7 +18,7 @@
   overflow-x: hidden;
 }
 
-.panel__list__item {
+.panel__listItem {
   animation: appear-left .3s ease-in-out;
 }
 
@@ -71,5 +73,13 @@
 }
 
 .panel__listItem__addElement {
-  animation: appear-right .3s ease-in-out;
+  display: none;
+  &:not(.show){
+    animation: disappear-right-block .3s ease-in-out forwards;
+  }
+
+  &.show {
+    display: block;
+    animation: appear-right-block .3s ease-in-out forwards;
+  }
 }

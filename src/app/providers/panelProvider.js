@@ -12,17 +12,19 @@ const prepareCheckList = ({ setCheckList }) => (list, value) => {
   setCheckList(checkList);
 };
 
-const onAddingElement = ({ setIsAdding }) => () => {
+const onAddingElement = ({ setAddingWay, setIsAdding }) => () => {
   setIsAdding(true);
+  setAddingWay(true);
 };
 
 const onPanelOpen = ({ setIsOpen }) => () => {
   setIsOpen(true);
 };
 
-const onPanelClose = ({ setIsOpen, setIsAdding, setNewElement }) => () => {
+const onPanelClose = ({ setIsOpen, setAddingWay, setIsAdding, setNewElement }) => () => {
   setIsOpen(false);
   setIsAdding(false);
+  setAddingWay(false);
   setNewElement("");
 };
 
@@ -42,6 +44,7 @@ export default compose(
   withState("checkList", "setCheckList", Immutable.List()),
   withState("isAllChecked", "setIsAllChecked", true),
   withState("isAdding", "setIsAdding", false),
+  withState("addingWay", "setAddingWay", false),
   withState("errorAdding", "setErrorAdding", false),
   withState("newElement", "setNewElement", ""),
   connect(null, mapActionCreators),

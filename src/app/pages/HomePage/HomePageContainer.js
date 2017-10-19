@@ -23,6 +23,7 @@ const onAddElement = ({
   postElement,
   setNewElement,
   setIsAdding,
+  setAddingWay,
   setErrorAdding
 }) => e => {
   e.preventDefault();
@@ -33,8 +34,11 @@ const onAddElement = ({
     setErrorAdding(false);
     postElement({ value: newElement, count: 0 }).then(() => {
       doFetchElementList();
-      setNewElement("");
       setIsAdding(false);
+      setTimeout(() => {
+        setNewElement("");
+        setAddingWay(false);
+      }, 300);
     });
   }
 };
