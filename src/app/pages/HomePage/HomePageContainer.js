@@ -12,8 +12,34 @@ const mapActionCreators = {
 };
 
 function componentWillMount() {
-  const { fetchElementList, setElements, setIsLoading, prepareCheckList } = this.props;
+  const { doFetchElementList } = this.props;
 
+  doFetchElementList();
+}
+
+const onAddElement = ({
+  newElement,
+  doFetchElementList,
+  postElement,
+  setNewElement,
+  setIsAdding,
+  setErrorAdding
+}) => e => {
+  e.preventDefault();
+
+  if (!newElement) {
+    setErrorAdding(true);
+  } else {
+    setErrorAdding(false);
+    postElement({ value: newElement, count: 0 }).then(() => {
+      doFetchElementList();
+      setNewElement("");
+      setIsAdding(false);
+    });
+  }
+};
+
+const doFetchElementList = ({ fetchElementList, setElements, setIsLoading, prepareCheckList }) => () => {
   fetchElementList().then(response => {
     const elements = Immutable.fromJS(response.data);
     setElements(elements);
@@ -21,7 +47,7 @@ function componentWillMount() {
     setIsLoading(false);
     prepareCheckList(elements, true);
   });
-}
+};
 
 export default compose(
   withState("isLoading", "setIsLoading", true),
@@ -30,8 +56,10 @@ export default compose(
   panelProvider,
   shuffleProvider,
   withHandlers({
+    doFetchElementList,
     fetchElementList
   }),
+  withHandlers({ onAddElement }),
   lifecycle({ componentWillMount }),
   withTranslator
 )(HomePage);

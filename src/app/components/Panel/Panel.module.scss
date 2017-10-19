@@ -1,11 +1,23 @@
 @import "app/components/Theme.scss";
 
+@include appear-right;
+
 .panel__content {
   height: 100%;
 }
 
+.panel__form {
+  position: relative;
+  overflow: hidden;
+}
+
 .panel__listContainer {
   overflow: auto;
+  overflow-x: hidden;
+}
+
+.panel__list__item {
+  animation: appear-left .3s ease-in-out;
 }
 
 .panel__btn__checkall {
@@ -35,4 +47,29 @@
       transform: translate(-50%, -50%) scale(1);
     }
   }
+}
+
+.panel__btn__add {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  z-index: 99999;
+  background: $primary-color !important;
+
+  i {
+    transform: rotate(0);
+    transition: transform .2s linear;
+  }
+
+  &.panel__btn__adding {
+    i {
+      transform: rotate(-360deg);
+    }
+  }
+}
+
+.panel__listItem__addElement {
+  animation: appear-right .3s ease-in-out;
 }

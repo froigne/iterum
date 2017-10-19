@@ -8,3 +8,10 @@ export const fetchElementList = (config = {}) => dispatch => {
 
   return sendRequest;
 };
+
+// elements
+export const postElement = params => dispatch => {
+  const sendRequest = httpClient.post("elements", params);
+
+  return sendRequest;
+};

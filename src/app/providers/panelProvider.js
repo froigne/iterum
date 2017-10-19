@@ -1,21 +1,29 @@
 import { compose, withHandlers, withProps, withState } from "recompose";
+import { connect } from "react-redux";
+import { postElement } from "endpoints/api";
 import Immutable from "immutable";
+
+const mapActionCreators = {
+  postElement
+};
 
 const prepareCheckList = ({ setCheckList }) => (list, value) => {
   const checkList = Immutable.fromJS([...Array(list.size)].map((x, index) => value));
   setCheckList(checkList);
 };
 
-const onAddElement = () => () => {
-  console.log("add");
+const onAddingElement = ({ setIsAdding }) => () => {
+  setIsAdding(true);
 };
 
 const onPanelOpen = ({ setIsOpen }) => () => {
   setIsOpen(true);
 };
 
-const onPanelClose = ({ setIsOpen }) => () => {
+const onPanelClose = ({ setIsOpen, setIsAdding, setNewElement }) => () => {
   setIsOpen(false);
+  setIsAdding(false);
+  setNewElement("");
 };
 
 const onToggleCheck = ({ setCheckList, checkList }) => index => {
@@ -33,6 +41,10 @@ export default compose(
   withState("isOpen", "setIsOpen", false),
   withState("checkList", "setCheckList", Immutable.List()),
   withState("isAllChecked", "setIsAllChecked", true),
+  withState("isAdding", "setIsAdding", false),
+  withState("errorAdding", "setErrorAdding", false),
+  withState("newElement", "setNewElement", ""),
+  connect(null, mapActionCreators),
   withProps(({ elements, checkList }) => ({
     choiceList: Immutable.fromJS(elements.map((element, index) => element.merge({ active: checkList.get(index) })))
   })),
@@ -44,6 +56,6 @@ export default compose(
     onPanelClose,
     onToggleCheck,
     onToggleCheckAll,
-    onAddElement
+    onAddingElement
   })
 );

@@ -18,21 +18,26 @@ export const HomePage = ({
   isOpen,
   onPanelOpen,
   onPanelClose,
-  onAddElement,
+  onAddingElement,
   choiceList,
   onToggleCheckAll,
   isAllChecked,
   onToggleCheck,
   onChoosingWay,
   onChoose,
-  isChoosingWay
+  isChoosingWay,
+  isAdding,
+  newElement,
+  setNewElement,
+  onAddElement,
+  errorAdding
 }) => (
   <div>
     {isLoading ? (
       <div>load</div>
     ) : (
       <Layout>
-        <Header />
+        <Header onPanelOpen={onPanelOpen} />
 
         <Shuffle
           onShuffle={onShuffle}
@@ -49,14 +54,18 @@ export const HomePage = ({
 
         <Panel
           isOpen={isOpen}
-          onPanelOpen={onPanelOpen}
-          onAddElement={onAddElement}
+          onAddingElement={onAddingElement}
           onPanelClose={onPanelClose}
           title={translate("What my choice ?")}
           onToggleCheck={onToggleCheck}
           onToggleCheckAll={onToggleCheckAll}
           choiceList={choiceList}
           isAllChecked={isAllChecked}
+          isAdding={isAdding}
+          onAddElement={onAddElement}
+          newElement={newElement}
+          errorAdding={errorAdding}
+          setNewElement={setNewElement}
         />
 
         <Footer />
@@ -71,7 +80,7 @@ HomePage.propTypes = {
   isOpen: PropTypes.bool,
   onPanelOpen: PropTypes.func,
   onPanelClose: PropTypes.func,
-  onAddElement: PropTypes.func,
+  onAddingElement: PropTypes.func,
   onShuffle: PropTypes.func,
   onShuffleProgress: PropTypes.func,
   onValidate: PropTypes.func,
@@ -82,7 +91,12 @@ HomePage.propTypes = {
   isAllChecked: PropTypes.bool,
   onChoosingWay: PropTypes.func,
   onChoose: PropTypes.func,
-  isChoosingWay: PropTypes.bool
+  isChoosingWay: PropTypes.bool,
+  isAdding: PropTypes.bool,
+  newElement: PropTypes.string,
+  setNewElement: PropTypes.func,
+  onAddElement: PropTypes.func,
+  errorAdding: PropTypes.bool
 };
 
 export default HomePage;

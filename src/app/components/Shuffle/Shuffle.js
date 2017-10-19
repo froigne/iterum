@@ -19,12 +19,12 @@ export const Shuffle = ({
   onChoose,
   isChoosingWay
 }) => {
-  const activeList = choiceList.filter(item => item.get("active") === true);
+  const activeList = choiceList.filter(item => item.get("active") === "");
 
   return (
     <Flex direction="row" size={1} middle center className={classes.shuffleContainer}>
       {!shuffleResult ? (
-        <div className={classes.shuffle__element} onClick={onShuffle}>
+        <div className={classes.shuffle__element} onClick={activeList.size ? onShuffle : () => null}>
           <Mixer className={classes.shuffle__mixer} replacements=")%/](€!\#[&?)" fps={60} factor={1}>
             I don't know what i want
           </Mixer>

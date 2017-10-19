@@ -1,7 +1,6 @@
 @import "app/components/Theme.scss";
 
 @include appear;
-@include appear-rotate;
 
 .shuffleContainer {
   padding: 0 $gutter;

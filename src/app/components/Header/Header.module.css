@@ -9,6 +9,10 @@
   font-family: 'Lobster', sans-serif;
   text-shadow: 1px 1px #000; }
 
+.header__btn__panel {
+  position: absolute !important;
+  right: 34px; }
+
 @media only screen and (min-width: 480px) {
   .headerContainer {
     padding: 10px 0; } }

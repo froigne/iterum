@@ -45,13 +45,28 @@ $white-grey: #eee;
   }
 }
 
-@mixin appear-rotate {
-  @keyframes appear-rotate {
+@mixin appear-right {
+  @keyframes appear-right {
     0% {
-      transform: rotate(0);
+      transform: translatex(50px);
+      opacity: 0;
     }
     100% {
-      transform: rotate(980deg);
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+@mixin appear-left {
+  @keyframes appear-left {
+    0% {
+      transform: translatex(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
     }
   }
 }

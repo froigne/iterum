@@ -5,7 +5,7 @@ const addDefaultContentType = request => {
   return {
     ...request,
     headers: {
-      "Content-Type": "application/ld+json",
+      "Content-Type": "application/json",
       ...request.headers
     }
   };
