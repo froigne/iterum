@@ -1,11 +1,5 @@
 import { compose, withHandlers, withProps, withState } from "recompose";
-import { connect } from "react-redux";
-import { postElement } from "endpoints/api";
 import Immutable from "immutable";
-
-const mapActionCreators = {
-  postElement
-};
 
 const prepareCheckList = ({ setCheckList }) => (list, value) => {
   const checkList = Immutable.fromJS([...Array(list.size)].map((x, index) => value));
@@ -47,7 +41,6 @@ export default compose(
   withState("addingWay", "setAddingWay", false),
   withState("errorAdding", "setErrorAdding", false),
   withState("newElement", "setNewElement", ""),
-  connect(null, mapActionCreators),
   withProps(({ elements, checkList }) => ({
     choiceList: Immutable.fromJS(elements.map((element, index) => element.merge({ active: checkList.get(index) })))
   })),

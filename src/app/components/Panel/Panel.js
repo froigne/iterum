@@ -27,6 +27,7 @@ export const Panel = ({
   newElement,
   setNewElement,
   onAddElement,
+  onDeleteElement,
   errorAdding
 }) => (
   <Drawer
@@ -40,16 +41,23 @@ export const Panel = ({
       <Subheader>{title}</Subheader>
       <Flex size={1} className={classes.panel__listContainer}>
         <List>
-          {choiceList
-            .entrySeq()
-            .map(([index, choiceItem]) => (
-              <ListItem
-                className={classes.panel__listItem}
-                key={index}
-                leftCheckbox={<Checkbox checked={choiceItem.get("active")} onCheck={() => onToggleCheck(index)} />}
-                primaryText={choiceItem.get("value")}
-              />
-            ))}
+          {choiceList.entrySeq().map(([index, choiceItem]) => (
+            <ListItem
+              className={classes.panel__listItem}
+              key={choiceItem.get("id")}
+              leftCheckbox={
+                <Checkbox checked={choiceItem.get("active")} onCheck={() => onToggleCheck(choiceItem.get("id"))} />
+              }
+              primaryText={choiceItem.get("value")}
+            >
+              <Button.IconFlat
+                className={classes.panel__listItem__delete}
+                onClick={() => onDeleteElement(choiceItem.get("id"))}
+              >
+                clear
+              </Button.IconFlat>
+            </ListItem>
+          ))}
           {addingWay ? (
             <form onSubmit={onAddElement}>
               <ListItem
@@ -104,6 +112,7 @@ Panel.propTypes = {
   onAddingElement: PropTypes.func,
   setNewElement: PropTypes.func.isRequired,
   onAddElement: PropTypes.func.isRequired,
+  onDeleteElement: PropTypes.func.isRequired,
   newElement: PropTypes.string.isRequired
 };
 

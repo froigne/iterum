@@ -41,6 +41,15 @@
 
 .panel__listItem {
   animation: appear-left .3s ease-in-out; }
+  .panel__listItem .panel__listItem__delete {
+    position: absolute !important;
+    right: 0;
+    top: 0;
+    opacity: 0; }
+    .panel__listItem .panel__listItem__delete i {
+      font-size: 16px !important; }
+  .panel__listItem:hover .panel__listItem__delete, .panel__listItem:focus .panel__listItem__delete, .panel__listItem:active .panel__listItem__delete {
+    opacity: 1; }
 
 .panel__btn__checkall {
   text-align: center;

@@ -31,6 +31,7 @@ export const HomePage = ({
   newElement,
   setNewElement,
   onAddElement,
+  onDeleteElement,
   errorAdding
 }) => (
   <div>
@@ -68,6 +69,7 @@ export const HomePage = ({
           newElement={newElement}
           errorAdding={errorAdding}
           setNewElement={setNewElement}
+          onDeleteElement={onDeleteElement}
         />
 
         <Footer />
@@ -99,6 +101,7 @@ HomePage.propTypes = {
   newElement: PropTypes.string,
   setNewElement: PropTypes.func,
   onAddElement: PropTypes.func,
+  onDeleteElement: PropTypes.func,
   errorAdding: PropTypes.bool
 };
 

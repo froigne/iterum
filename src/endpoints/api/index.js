@@ -9,9 +9,14 @@ export const fetchElementList = (config = {}) => dispatch => {
   return sendRequest;
 };
 
-// elements
 export const postElement = params => dispatch => {
   const sendRequest = httpClient.post("elements", params);
+
+  return sendRequest;
+};
+
+export const deleteElement = entry => dispatch => {
+  const sendRequest = httpClient.delete(`elements/${entry}`);
 
   return sendRequest;
 };

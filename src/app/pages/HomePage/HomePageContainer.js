@@ -1,6 +1,6 @@
 import { compose, lifecycle, withHandlers, withState } from "recompose";
 import { connect } from "react-redux";
-import { fetchElementList } from "endpoints/api";
+import { deleteElement, fetchElementList, postElement } from "endpoints/api";
 import { withTranslator } from "app/decorators";
 import HomePage from "./HomePage";
 import Immutable from "immutable";
@@ -8,7 +8,9 @@ import panelProvider from "app/providers/panelProvider";
 import shuffleProvider from "app/providers/shuffleProvider";
 
 const mapActionCreators = {
-  fetchElementList
+  fetchElementList,
+  postElement,
+  deleteElement
 };
 
 function componentWillMount() {
@@ -43,6 +45,12 @@ const onAddElement = ({
   }
 };
 
+const onDeleteElement = ({ deleteElement, doFetchElementList }) => elementId => {
+  deleteElement(elementId).then(() => {
+    doFetchElementList();
+  });
+};
+
 const doFetchElementList = ({ fetchElementList, setElements, setIsLoading, prepareCheckList }) => () => {
   fetchElementList().then(response => {
     const elements = Immutable.fromJS(response.data);
@@ -63,7 +71,7 @@ export default compose(
     doFetchElementList,
     fetchElementList
   }),
-  withHandlers({ onAddElement }),
+  withHandlers({ onAddElement, onDeleteElement }),
   lifecycle({ componentWillMount }),
   withTranslator
 )(HomePage);
