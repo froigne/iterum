@@ -2,24 +2,34 @@
 
 .headerContainer {
   position: relative;
+  padding: $gutter-sm $gutter ;
 }
 
 .header__title {
   margin: 0;
   color: $primary-color;
   text-transform: lowercase;
-  font-size: 4em;
+  font-size: 2em;
+  line-height: 1;
   font-family: 'Lobster', sans-serif;
   text-shadow: 1px 1px $black;
 }
 
 .header__btn__panel {
   position: absolute !important;
-  right: 34px;
+  right: 0;
 }
 
 @media only screen and (min-width : 480px) {
   .headerContainer {
     padding: $gutter-sm 0;
+  }
+
+  .header__title {
+    font-size: 4em;
+  }
+
+  .header__btn__panel {
+    right: $gutter-sm;
   }
 }

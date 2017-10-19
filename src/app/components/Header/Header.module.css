@@ -1,18 +1,24 @@
 .headerContainer {
-  position: relative; }
+  position: relative;
+  padding: 16px 25px; }
 
 .header__title {
   margin: 0;
   color: #ddca7e;
   text-transform: lowercase;
-  font-size: 4em;
+  font-size: 2em;
+  line-height: 1;
   font-family: 'Lobster', sans-serif;
   text-shadow: 1px 1px #000; }
 
 .header__btn__panel {
   position: absolute !important;
-  right: 34px; }
+  right: 0; }
 
 @media only screen and (min-width: 480px) {
   .headerContainer {
-    padding: 10px 0; } }
+    padding: 16px 0; }
+  .header__title {
+    font-size: 4em; }
+  .header__btn__panel {
+    right: 16px; } }
