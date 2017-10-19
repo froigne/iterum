@@ -7,6 +7,8 @@ import Roller from "app/components/Roller";
 import TagCloud from "app/components/UI/TagCloud";
 import classes from "./Shuffle.module.css";
 
+const noop = () => null;
+
 export const Shuffle = ({
   choiceList,
   isShuffleFinish,
@@ -19,12 +21,12 @@ export const Shuffle = ({
   onChoose,
   isChoosingWay
 }) => {
-  const activeList = choiceList.filter(item => item.get("active") === "");
+  const activeList = choiceList.filter(item => item.get("active") === true);
 
   return (
     <Flex direction="row" size={1} middle center className={classes.shuffleContainer}>
       {!shuffleResult ? (
-        <div className={classes.shuffle__element} onClick={activeList.size ? onShuffle : () => null}>
+        <div className={classes.shuffle__element} onClick={activeList.size ? onShuffle : noop}>
           <Mixer className={classes.shuffle__mixer} replacements=")%/](€!\#[&?)" fps={60} factor={1}>
             I don't know what i want
           </Mixer>
