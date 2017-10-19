@@ -13,9 +13,9 @@ export const Header = ({ onPanelOpen }) => (
         Iterum
       </Title>
     </Link>
-    <Button.Icon className={classes.header__btn__panel} size={"small"} onClick={onPanelOpen}>
+    <Button.IconFlat className={classes.header__btn__panel} size={"small"} onClick={onPanelOpen}>
       list
-    </Button.Icon>
+    </Button.IconFlat>
   </Flex>
 );
 
