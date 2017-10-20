@@ -1,4 +1,4 @@
-import { compose, lifecycle, withHandlers, withState } from "recompose";
+import { compose, lifecycle, withState } from "recompose";
 import { connect } from "react-redux";
 import { fetchElementList } from "endpoints/api";
 import { withTranslator } from "app/decorators";
@@ -29,9 +29,6 @@ export default compose(
   connect(null, mapActionCreators),
   panelProvider,
   shuffleProvider,
-  withHandlers({
-    fetchElementList
-  }),
   lifecycle({ componentWillMount }),
   withTranslator
 )(HomePage);

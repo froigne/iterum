@@ -14,8 +14,8 @@ class FakeClient {
     this.collectionUrl = collectionUrl;
   }
 
-  fetchEntity = (entityUrl, config = {}) => {
-    const sendGetRequest = httpClient.get(entityUrl, config);
+  fetchEntity = (entity, config = {}) => {
+    const sendGetRequest = httpClient.get(`${this.collectionUrl}/${entity}`, config);
 
     return sendGetRequest;
   };

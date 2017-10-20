@@ -23,7 +23,7 @@ class FakeActions {
   };
 
   receiveCollection = responseData => (dispatch, getState) => {
-    const normalizedData = normalize(responseData["data"], [this.entitySchema]);
+    const normalizedData = normalize(responseData, [this.entitySchema]);
     dispatch(Entities.receiveEntities(normalizedData.entities));
     return {
       ...responseData,
