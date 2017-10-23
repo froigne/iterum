@@ -1,13 +1,9 @@
-import createHttpClient from "http-client/axios/createHttpClient";
-
-const httpClient = createHttpClient();
+import { elementType } from "./schemas";
+import { generator } from "endpoints/lib";
 
 // elements
-export const fetchElementList = (config = {}) => dispatch => {
-  const sendRequest = httpClient.get("elements", config);
-
-  return sendRequest;
-};
+const elementGenerator = generator.with("/elements", elementType);
+export const fetchElementList = elementGenerator.fetchEntityList;
 
 export const postElement = params => dispatch => {
   const sendRequest = httpClient.post("elements", params);

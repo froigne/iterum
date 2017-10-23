@@ -68,8 +68,7 @@ export default compose(
   panelProvider,
   shuffleProvider,
   withHandlers({
-    doFetchElementList,
-    fetchElementList
+    doFetchElementList
   }),
   withHandlers({ onAddElement, onDeleteElement }),
   lifecycle({ componentWillMount }),
