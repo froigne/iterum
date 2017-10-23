@@ -40,7 +40,7 @@ const onAddElement = ({
       setTimeout(() => {
         setNewElement("");
         setAddingWay(false);
-      }, 300);
+      }, 400);
     });
   }
 };
