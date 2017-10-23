@@ -45,9 +45,7 @@ export const Panel = ({
             <ListItem
               className={classes.panel__listItem}
               key={choiceItem.get("id")}
-              leftCheckbox={
-                <Checkbox checked={choiceItem.get("active")} onCheck={() => onToggleCheck(choiceItem.get("id"))} />
-              }
+              leftCheckbox={<Checkbox checked={choiceItem.get("active")} onCheck={() => onToggleCheck(index)} />}
               primaryText={choiceItem.get("value")}
             >
               <Button.IconFlat
