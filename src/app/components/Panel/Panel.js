@@ -47,14 +47,15 @@ export const Panel = ({
               key={choiceItem.get("id")}
               leftCheckbox={<Checkbox checked={choiceItem.get("active")} onCheck={() => onToggleCheck(index)} />}
               primaryText={choiceItem.get("value")}
-            >
-              <Button.IconFlat
-                className={classes.panel__listItem__delete}
-                onClick={() => onDeleteElement(choiceItem.get("id"))}
-              >
-                clear
-              </Button.IconFlat>
-            </ListItem>
+              rightIconButton={
+                <Button.IconFlat
+                  className={classes.panel__listItem__delete}
+                  onClick={() => onDeleteElement(choiceItem.get("id"))}
+                >
+                  clear
+                </Button.IconFlat>
+              }
+            />
           ))}
           {addingWay ? (
             <form onSubmit={onAddElement}>
