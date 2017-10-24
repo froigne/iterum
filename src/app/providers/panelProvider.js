@@ -36,7 +36,7 @@ const onToggleCheckAll = ({ elements, setIsAllChecked, isAllChecked, prepareChec
 function componentWillReceiveProps(nextProps) {
   const { prepareCheckList, isAllChecked } = this.props;
   if (!nextProps.elementIds.equals(this.props.elementIds)) {
-    prepareCheckList(isAllChecked, true);
+    prepareCheckList(nextProps.elementIds, isAllChecked);
   }
 }
 
@@ -50,7 +50,9 @@ export default compose(
   withState("newElement", "setNewElement", ""),
   withProps(({ elements, checkList }) => ({
     choiceList: Immutable.fromJS(
-      elements.map((element, index) => Immutable.fromJS(element).merge({ active: checkList.get(index) }))
+      elements.map((element, index) => {
+        return Immutable.fromJS(element).merge({ active: checkList.get(index) });
+      })
     )
   })),
   withHandlers({

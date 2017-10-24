@@ -58,7 +58,7 @@ class FakeClient {
   saveEntity = (entityUrl = null, data = {}, config = {}) => {
     const sendSaveRequest = httpClient.request({
       method: entityUrl ? "PUT" : "POST",
-      url: entityUrl || this.collectionUrl,
+      url: entityUrl ? `${this.collectionUrl}/${entityUrl}` : this.collectionUrl,
       data,
       ...config
     });
@@ -67,7 +67,7 @@ class FakeClient {
   };
 
   deleteEntity = (entityUrl, config = {}) => {
-    const sendDeleteRequest = httpClient.delete(entityUrl, config);
+    const sendDeleteRequest = httpClient.delete(`${this.collectionUrl}/${entityUrl}`, config);
 
     return sendDeleteRequest;
   };

@@ -21,7 +21,6 @@ export class Generator {
 
   saveEntity = (...args) => dispatch => {
     const sendRequest = this.fakeClient.saveEntity(...args);
-
     return sendRequest.then(response => dispatch(this.fakeActions.receiveEntity(response.data)));
   };
 

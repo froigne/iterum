@@ -1,6 +1,6 @@
 import { compose, lifecycle, withHandlers, withState } from "recompose";
 import { connect } from "react-redux";
-import { deleteElement, fetchElementList, postElement } from "endpoints/api";
+import { deleteElement, fetchElementList, saveElement } from "endpoints/api";
 import { getElements } from "endpoints/redux/selectors";
 import { withTranslator } from "app/decorators";
 import HomePage from "./HomePage";
@@ -13,7 +13,7 @@ const mapStateToProps = (state, { elementIds }) => ({
 
 const mapActionCreators = {
   fetchElementList,
-  postElement,
+  saveElement,
   deleteElement
 };
 
@@ -28,24 +28,36 @@ function componentWillMount() {
   });
 }
 
-const onAddElement = ({ newElement, postElement, setNewElement, setIsAdding, setAddingWay, setErrorAdding }) => e => {
+const onAddElement = ({
+  newElement,
+  setElementIds,
+  saveElement,
+  elementIds,
+  setNewElement,
+  setIsAdding,
+  setAddingWay,
+  setErrorAdding
+}) => e => {
   e.preventDefault();
 
   if (!newElement) {
     setErrorAdding(true);
   } else {
     setErrorAdding(false);
-    postElement({ value: newElement, count: 0 }).then(() => {
+    saveElement(null, { value: newElement, count: 0 }).then(response => {
       setIsAdding(false);
       setTimeout(() => {
+        setElementIds(elementIds.push(response.get("id")));
         setNewElement("");
         setAddingWay(false);
-      }, 400);
+      }, 300);
     });
   }
 };
 
-const onDeleteElement = ({ deleteElement, doFetchElementList }) => elementId => {
+const onDeleteElement = ({ deleteElement, doFetchElementList, setElementIds, elementIds }) => elementId => {
+  const index = elementIds.indexOf(elementId);
+  setElementIds(elementIds.delete(index));
   deleteElement(elementId);
 };
 
