@@ -1,4 +1,4 @@
-import { compose, withHandlers, withProps, withState } from "recompose";
+import { compose, lifecycle, withHandlers, withProps, withState } from "recompose";
 import Immutable from "immutable";
 
 const prepareCheckList = ({ setCheckList }) => (list, value) => {
@@ -33,6 +33,13 @@ const onToggleCheckAll = ({ elements, setIsAllChecked, isAllChecked, prepareChec
   setIsAllChecked(nextValue);
 };
 
+function componentWillReceiveProps(nextProps) {
+  const { prepareCheckList, isAllChecked } = this.props;
+  if (!nextProps.elementIds.equals(this.props.elementIds)) {
+    prepareCheckList(isAllChecked, true);
+  }
+}
+
 export default compose(
   withState("isOpen", "setIsOpen", false),
   withState("checkList", "setCheckList", Immutable.List()),
@@ -42,7 +49,9 @@ export default compose(
   withState("errorAdding", "setErrorAdding", false),
   withState("newElement", "setNewElement", ""),
   withProps(({ elements, checkList }) => ({
-    choiceList: Immutable.fromJS(elements.map((element, index) => element.merge({ active: checkList.get(index) })))
+    choiceList: Immutable.fromJS(
+      elements.map((element, index) => Immutable.fromJS(element).merge({ active: checkList.get(index) }))
+    )
   })),
   withHandlers({
     prepareCheckList
@@ -53,5 +62,6 @@ export default compose(
     onToggleCheck,
     onToggleCheckAll,
     onAddingElement
-  })
+  }),
+  lifecycle({ componentWillReceiveProps })
 );

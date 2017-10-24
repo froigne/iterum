@@ -1,11 +1,15 @@
 import { compose, lifecycle, withHandlers, withState } from "recompose";
 import { connect } from "react-redux";
 import { deleteElement, fetchElementList, postElement } from "endpoints/api";
+import { getElements } from "endpoints/redux/selectors";
 import { withTranslator } from "app/decorators";
 import HomePage from "./HomePage";
-import Immutable from "immutable";
 import panelProvider from "app/providers/panelProvider";
 import shuffleProvider from "app/providers/shuffleProvider";
+
+const mapStateToProps = (state, { elementIds }) => ({
+  elements: getElements(state, elementIds)
+});
 
 const mapActionCreators = {
   fetchElementList,
@@ -14,20 +18,17 @@ const mapActionCreators = {
 };
 
 function componentWillMount() {
-  const { doFetchElementList } = this.props;
+  const { fetchElementList, setElementIds, setIsLoading, prepareCheckList } = this.props;
 
-  doFetchElementList();
+  fetchElementList().then(response => {
+    const elementListIds = response.map(entity => entity.get("id"));
+    setElementIds(elementListIds);
+    prepareCheckList(elementListIds, true);
+    setIsLoading(false);
+  });
 }
 
-const onAddElement = ({
-  newElement,
-  doFetchElementList,
-  postElement,
-  setNewElement,
-  setIsAdding,
-  setAddingWay,
-  setErrorAdding
-}) => e => {
+const onAddElement = ({ newElement, postElement, setNewElement, setIsAdding, setAddingWay, setErrorAdding }) => e => {
   e.preventDefault();
 
   if (!newElement) {
@@ -35,7 +36,6 @@ const onAddElement = ({
   } else {
     setErrorAdding(false);
     postElement({ value: newElement, count: 0 }).then(() => {
-      doFetchElementList();
       setIsAdding(false);
       setTimeout(() => {
         setNewElement("");
@@ -46,30 +46,16 @@ const onAddElement = ({
 };
 
 const onDeleteElement = ({ deleteElement, doFetchElementList }) => elementId => {
-  deleteElement(elementId).then(() => {
-    doFetchElementList();
-  });
-};
-
-const doFetchElementList = ({ fetchElementList, setElements, setIsLoading, prepareCheckList }) => () => {
-  fetchElementList().then(response => {
-    const elements = Immutable.fromJS(response.data);
-    setElements(elements);
-
-    setIsLoading(false);
-    prepareCheckList(elements, true);
-  });
+  deleteElement(elementId);
 };
 
 export default compose(
-  withState("isLoading", "setIsLoading", true),
-  withState("elements", "setElements", Immutable.List()),
   connect(null, mapActionCreators),
+  withState("isLoading", "setIsLoading", true),
+  withState("elementIds", "setElementIds"),
+  connect(mapStateToProps),
   panelProvider,
   shuffleProvider,
-  withHandlers({
-    doFetchElementList
-  }),
   withHandlers({ onAddElement, onDeleteElement }),
   lifecycle({ componentWillMount }),
   withTranslator
