@@ -1,15 +1,17 @@
 {
-  "name": "",
+  "name": "iterum",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "axios": "^0.16.1",
     "classnames": "^2.2.5",
     "immutable": "^3.8.1",
-    "material-ui": "^0.18.1",
+    "material-ui": "^0.19.1",
     "moment": "^2.18.1",
     "node-sass-chokidar": "0.0.3",
-    "prop-types": "^15.5.10",
+    "normalizr": "^3.2.4",
+    "parse-link-header": "^1.0.1",
+    "prop-types": "^15.6.0",
     "qs": "^6.4.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -18,17 +20,20 @@
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
     "react-scripts": "github:froigne/react-scripts",
+    "react-slick": "^0.15.4",
+    "react-tagcloud": "^1.2.0",
     "react-tap-event-plugin": "^2.0.1",
-    "recompose": "^0.23.4",
-    "redux": "^3.6.0",
+    "react-wrappy-text": "^1.1.1",
+    "recompose": "^0.25.0",
+    "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "eslint-plugin-prettier": "^2.1.2",
+    "eslint-plugin-prettier": "^2.3.0",
     "eslint-plugin-sort-imports-es6-autofix": "^0.1.1",
     "npm-run-all": "^4.0.2",
-    "prettier": "^1.5.2",
-    "serve": "^5.1.5"
+    "prettier": "^1.7.0",
+    "serve": "^6.1.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",

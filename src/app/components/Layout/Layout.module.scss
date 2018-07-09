@@ -1,5 +1,8 @@
 @import "app/components/Theme.scss";
 
-.layout {
-  color: $text-color;
+.layoutContainer {
+  height: 100vh;
+}
+
+@media only screen and (min-width : 768px) {
 }

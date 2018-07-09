@@ -1,0 +1,104 @@
+@import "app/components/Theme.scss";
+
+@include appear-right-block;
+@include disappear-right-block;
+@include appear-left;
+
+.panel__content {
+  height: 100%;
+}
+
+.panel__form {
+  position: relative;
+  overflow: hidden;
+}
+
+.panel__listContainer {
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.panel__listItem {
+  animation: appear-left .3s ease-in-out;
+
+  .panel__listItem__delete {
+    position: absolute !important;
+    right: 0;
+    top: 0;
+    opacity: 0;
+
+    i {
+      font-size: 16px !important;
+    }
+  }
+
+  &:hover, &:focus, &:active {
+    .panel__listItem__delete {
+      opacity: 1;
+    }
+  }
+}
+
+
+
+.panel__btn__checkall {
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 15px 0;
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    background: $primary-color;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform .3s cubic-bezier(.4,0,.5,1);
+  }
+
+  &.isAllChecked {
+    &::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
+
+.panel__btn__add {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  z-index: 99999;
+  background: $primary-color !important;
+
+  i {
+    transform: rotate(0);
+    transition: transform .2s linear;
+  }
+
+  &.panel__btn__adding {
+    i {
+      transform: rotate(-360deg);
+    }
+  }
+}
+
+.panel__listItem__addElement {
+  display: none;
+  &:not(.show){
+    animation: disappear-right-block .3s ease-in-out forwards;
+  }
+
+  &.show {
+    display: block;
+    animation: appear-right-block .3s ease-in-out forwards;
+  }
+}

@@ -1,0 +1,56 @@
+@import 'app/components/Theme.scss';
+
+.btn {
+  margin: 20px 0;
+}
+
+.btnIcon {
+  color: $text-color;
+  background: $secondary-text-color;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5em;
+  width: 60px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border: none;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+.btnIconFlat {
+  color: $text-color;
+
+  &.small {
+    width: 72px !important;
+    height: 72px !important;
+    padding: 16px !important;
+
+    i {
+      font-size: 36px;
+    }
+  }
+  &.medium {
+    width: 96px !important;
+    height: 96px !important;
+    padding: 24px !important;
+
+    i {
+      font-size: 48px;
+    }
+  }
+  &.large {
+    width: 120px !important;
+    height: 120px !important;
+    padding: 30px !important;
+
+    i {
+      font-size: 60px;
+    }
+  }
+}

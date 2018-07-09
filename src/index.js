@@ -1,8 +1,7 @@
-import React from "react";
 import App from "app";
-
-import renderApp from "./renderApp";
+import React from "react";
 import registerServiceWorker from "./registerServiceWorker";
+import renderApp from "./renderApp";
 import "./index.css";
 
 renderApp(<App />, document.getElementById("root"));

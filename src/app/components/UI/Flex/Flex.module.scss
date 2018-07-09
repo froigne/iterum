@@ -1,0 +1,83 @@
+%flex-row,
+.flex-row {
+  display: flex;
+  flex-direction: row;
+
+  &.center {
+    justify-content: center;
+  }
+
+  &.middle {
+    align-items: center;
+  }
+
+  &.left {
+    justify-content: flex-start;
+  }
+
+  &.right {
+    justify-content: flex-end;
+  }
+
+  &.top {
+    align-items: flex-start;
+  }
+
+  &.bottom {
+    align-items: flex-end;
+  }
+}
+
+%flex-column,
+.flex-column {
+  display: flex;
+  flex-direction: column;
+
+  &.center {
+    align-items: center;
+  }
+
+  &.middle {
+    justify-content: center;
+  }
+
+  &.left {
+    align-items: flex-start;
+  }
+
+  &.right {
+    align-items: flex-end;
+  }
+
+  &.top {
+    justify-content: flex-start;
+  }
+
+  &.bottom {
+    justify-content: flex-end;
+  }
+}
+
+%flex-row,
+%flex-column,
+.flex-row,
+.flex-column {
+
+  &.flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  &.space-between {
+    justify-content: space-between;
+  }
+
+  &.space-around {
+    justify-content: space-around;
+  }
+}
+
+@for $i from 0 through 20 {
+  .flex-#{$i} {
+    flex: $i;
+  }
+}

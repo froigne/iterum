@@ -14,11 +14,12 @@ addLocaleData([...frLocaleData]);
 const store = createStore();
 
 const muiTheme = getMuiTheme({
-  fontFamily: "Lato, sans-serif",
+  fontFamily: "Raleway, sans-serif",
   palette: {
-    primary1Color: "#244192",
-    accent1Color: "#92BC42",
-    textColor: "#333"
+    primary1Color: "#ddca7e",
+    accent1Color: "#fff",
+    textColor: "#fff",
+    canvasColor: "#333333"
   }
 });
 

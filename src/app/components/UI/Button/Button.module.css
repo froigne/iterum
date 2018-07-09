@@ -1,0 +1,38 @@
+.btn {
+  margin: 20px 0; }
+
+.btnIcon {
+  color: #FFF;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5em;
+  width: 60px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border: none; }
+  .btnIcon:focus, .btnIcon:active {
+    outline: none; }
+
+.btnIconFlat {
+  color: #FFF; }
+  .btnIconFlat.small {
+    width: 72px !important;
+    height: 72px !important;
+    padding: 16px !important; }
+    .btnIconFlat.small i {
+      font-size: 36px; }
+  .btnIconFlat.medium {
+    width: 96px !important;
+    height: 96px !important;
+    padding: 24px !important; }
+    .btnIconFlat.medium i {
+      font-size: 48px; }
+  .btnIconFlat.large {
+    width: 120px !important;
+    height: 120px !important;
+    padding: 30px !important; }
+    .btnIconFlat.large i {
+      font-size: 60px; }

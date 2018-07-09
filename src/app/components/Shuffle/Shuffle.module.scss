@@ -1,0 +1,30 @@
+@import "app/components/Theme.scss";
+
+@include appear;
+
+.shuffleContainer {
+  padding: 0 $gutter;
+}
+
+.shuffle__element {
+  width: 100%;
+  animation: appear .25s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+@media only screen and (min-width : 480px) {
+  .shuffle__element {
+    width: auto;
+  }
+}
+
+@media only screen and (min-width : 1024px) {
+  .shuffleContainer {
+    padding: 0 $gutter-lg;
+  }
+}
+
+@media only screen and (min-width : 1824px) {
+  .shuffleContainer {
+    padding: 0 $gutter-lg-2x;
+  }
+}

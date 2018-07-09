@@ -1,37 +1,35 @@
 @import "app/components/Theme.scss";
 
-.brandLogo {
-  height: 80px;
+.headerContainer {
   position: relative;
-  padding-right: 10px;
+  padding: $gutter-sm $gutter ;
 }
 
-.brandLogo img {
-  max-height: 100%;
-}
-
-.brandName {
-  display: flex;
-  align-items: center;
+.header__title {
   margin: 0;
   color: $primary-color;
-  text-align: left !important;
+  text-transform: lowercase;
+  font-size: 2em;
+  line-height: 1;
+  font-family: 'Lobster', sans-serif;
+  text-shadow: 1px 1px $black;
 }
 
-.brandNavbar {
-  background-color: $white;
-  color: white;
-  padding: 0 $gutter-lg 0 20px;
+.header__btn__panel {
+  position: absolute !important;
+  right: 0;
 }
 
-@media only screen and (min-width : 768px) {
-  .brandLogo {
-    top: 15px;
-    padding-right: 20px;
+@media only screen and (min-width : 480px) {
+  .headerContainer {
+    padding: $gutter-sm 0;
   }
 
-  .brandNavbar {
-    padding: 0 $gutter-lg-2x 0 20px;
+  .header__title {
+    font-size: 4em;
+  }
+
+  .header__btn__panel {
+    right: $gutter-sm;
   }
 }
-

@@ -1,0 +1,96 @@
+@keyframes appear-right-block {
+  0% {
+    transform: scale(1);
+    opacity: 0; }
+  1% {
+    transform: translateX(50px) scale(1);
+    opacity: 0; }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1; } }
+
+@keyframes disappear-right-block {
+  0% {
+    transform: translateX(0) scale(1);
+    opacity: 1; }
+  99% {
+    transform: translateX(50px) scale(1);
+    opacity: 0; }
+  100% {
+    opacity: 0;
+    transform: translateX(50px) scale(0); } }
+
+@keyframes appear-left {
+  0% {
+    transform: translatex(-50px);
+    opacity: 0; }
+  100% {
+    transform: translateY(0);
+    opacity: 1; } }
+
+.panel__content {
+  height: 100%; }
+
+.panel__form {
+  position: relative;
+  overflow: hidden; }
+
+.panel__listContainer {
+  overflow: auto;
+  overflow-x: hidden; }
+
+.panel__listItem {
+  animation: appear-left .3s ease-in-out; }
+  .panel__listItem .panel__listItem__delete {
+    position: absolute !important;
+    right: 0;
+    top: 0;
+    opacity: 0; }
+    .panel__listItem .panel__listItem__delete i {
+      font-size: 16px !important; }
+  .panel__listItem:hover .panel__listItem__delete, .panel__listItem:focus .panel__listItem__delete, .panel__listItem:active .panel__listItem__delete {
+    opacity: 1; }
+
+.panel__btn__checkall {
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 15px 0;
+  overflow: hidden;
+  position: relative; }
+  .panel__btn__checkall::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    background: #ddca7e;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.5, 1); }
+  .panel__btn__checkall.isAllChecked::before {
+    transform: translate(-50%, -50%) scale(1); }
+
+.panel__btn__add {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  z-index: 99999;
+  background: #ddca7e !important; }
+  .panel__btn__add i {
+    transform: rotate(0);
+    transition: transform .2s linear; }
+  .panel__btn__add.panel__btn__adding i {
+    transform: rotate(-360deg); }
+
+.panel__listItem__addElement {
+  display: none; }
+  .panel__listItem__addElement:not(.show) {
+    animation: disappear-right-block .3s ease-in-out forwards; }
+  .panel__listItem__addElement.show {
+    display: block;
+    animation: appear-right-block .3s ease-in-out forwards; }

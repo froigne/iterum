@@ -1,11 +1,12 @@
+import Flex from "app/components/UI/Flex";
 import PropTypes from "prop-types";
 import React from "react";
 import classes from "./Layout.module.css";
 
 const Layout = ({ children }) => (
-  <div direction="column" className={classes.layout}>
+  <Flex direction="column" className={classes.layoutContainer}>
     {children}
-  </div>
+  </Flex>
 );
 
 Layout.propTypes = {
