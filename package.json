@@ -19,7 +19,7 @@
     "react-intl": "^2.3.0",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
-    "react-scripts": "github:froigne/react-scripts",
+    "react-scripts": "github:alex-pex/react-scripts",
     "react-slick": "^0.15.4",
     "react-tagcloud": "^1.2.0",
     "react-tap-event-plugin": "^2.0.1",
