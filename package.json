@@ -33,7 +33,7 @@
     "eslint-plugin-sort-imports-es6-autofix": "^0.1.1",
     "npm-run-all": "^4.0.2",
     "prettier": "^1.7.0",
-    "serve": "^6.1.0"
+    "serve": "^10.1.2"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
